@@ -1,0 +1,25 @@
+{
+  "created_utc": "2026-09-09T14:48:32.6915333Z",
+  "packaging_base_commit": "e555522adad42ab81856ce298fb702e01e3b71fd",
+  "source_note": "Historical, regenerable plot-harvest intermediates preserved as diagnostic material. This archive does not replace the committed sampled plot corpus or constitute a scientific result.",
+  "assets": [
+    {
+      "filename": "plot-harvest-intermediates-diagnostic.zip",
+      "bytes": 80067,
+      "sha256": "2056ae8d42c8b52ebf32fb3122d2a5cda7cb172af2ab2bdebaeddcd5b00b45d1",
+      "scientific_standing": "diagnostic_historical_intermediate",
+      "members": [
+        {
+          "path": "data/plots/.harvest_state.json",
+          "bytes": 173988,
+          "sha256": "121aa77c55398d3008a59c06e697bf436083f97b24ae3d1aa011890c29248e1a"
+        },
+        {
+          "path": "data/plots/plots_bn_harvest.csv",
+          "bytes": 267842,
+          "sha256": "a691df677dc94d78d0b79fe4507ae7872042a2c2abf5ba67ab7ba291de190aac"
+        }
+      ]
+    }
+  ]
+}

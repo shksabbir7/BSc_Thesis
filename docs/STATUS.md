@@ -2,6 +2,15 @@
 
 **Last updated:** 2026-09-09 (GitHub preservation verified).
 
+**Supplementary preservation audit — 2026-09-09:** A complete local inventory
+found three useful files absent from GitHub: the anonymous 73-page report, the
+78-page defence report, and `interface/.env.example`. They are now designated
+for ordinary version control. The ignored plot-harvest CSV and resume-state JSON
+are preserved in the separate, diagnostic-only
+`preservation-supplement-2026-09-09` Release; their tracked identities are in
+`docs/preservation_supplement_manifest_2026-09-09.json`. The committed sampled
+plot corpus and all canonical results remain unchanged.
+
 ## GitHub preservation — 2026-09-09
 
 Sabbir requested future clone-and-resume support and selected the same GitHub

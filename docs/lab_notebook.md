@@ -5987,3 +5987,47 @@ no scientific generation rerun occurred.
   confirmed pairing code releases with data snapshots and environment evidence;
   no scientific design changed. Added to related_work.md and references.bib as
   preservation infrastructure evidence, not an experimental-method citation.
+
+---
+
+## 2026-09-09 -- Preservation supplement: close the full-file audit gaps
+**Feeds:** Reproducibility appendix and future continuation
+**Commit:** `e555522adad42ab81856ce298fb702e01e3b71fd-dirty`
+**Artifacts:** `Report/AnonymousReport21701082.pdf`,
+`Report/Defence_Report_21701082.pdf`, `interface/.env.example`,
+`docs/preservation_supplement_manifest_2026-09-09.json`
+
+### Numbers
+- The local inventory covered 106,545 regular files, 11,101 directories and one
+  directory symlink, with zero enumeration or read errors.
+- Three useful files were absent from GitHub: two distinct reports (73 and 78
+  pages) and one 47-byte frontend environment template.
+- The supplementary ZIP contains exactly two ignored harvest intermediates,
+  441,830 uncompressed bytes and 80,067 archive bytes. Its SHA-256 is recorded
+  in the tracked manifest.
+
+### Decisions made (and why)
+- Sabbir requested that useful thesis material be available through GitHub and
+  that existing remote content not be duplicated. The reports and environment
+  template therefore enter ordinary version control, while the regenerable
+  harvest intermediates remain ignored and travel as one diagnostic Release
+  asset.
+- The supplement uses a new tag and asset name. The previously verified
+  preservation Release is not modified or replaced.
+
+### Findings (things we did not expect)
+- The two report PDFs are different documents rather than duplicate exports:
+  their hashes, page counts and extracted text differ.
+- The current `docs/STATUS.md` bytes are unique locally because its preservation
+  header and earlier working body came from two already preserved sources; this
+  is a synchronization issue rather than an uncovered file.
+
+### Consequences for downstream steps
+- A future clone receives both final report PDFs and the frontend setup template
+  directly. The supplementary archive is optional unless historical scraping or
+  resume-state inspection is needed.
+- No raw data, frozen split, canonical result, generation output, scoring output
+  or scientific method changed.
+
+### Citations needed
+- None. This closes a storage coverage audit and introduces no method.

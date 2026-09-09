@@ -12,6 +12,15 @@ Repository: <https://github.com/alphapie77/BSc_Thesis>
 Verified preservation release:
 <https://github.com/alphapie77/BSc_Thesis/releases/tag/preservation-2026-09-09>
 
+Supplementary plot-harvest archive:
+<https://github.com/alphapie77/BSc_Thesis/releases/tag/preservation-supplement-2026-09-09>
+
+The supplementary release preserves the ignored, regenerable harvest CSV and
+its resume-state JSON as historical diagnostic material. It does not replace
+`data/plots/plots_bn.csv`, change the frozen evaluation sample, or promote the
+harvest files into a scientific result. Verify its ZIP against
+`docs/preservation_supplement_manifest_2026-09-09.json` before extracting it.
+
 Use the release identified in `docs/STATUS.md`; do not assume a release has
 been uploaded merely because locally prepared files exist. Download its
 `manifest.json` and all named assets into one directory. In a fresh clone:
