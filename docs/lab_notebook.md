@@ -5926,3 +5926,49 @@ no scientific generation rerun occurred.
 ### Citations needed
 - None newly required. The analysis reuses the already documented paired
   bootstrap and exact McNemar procedures; it introduces no new estimator.
+
+---
+
+## 2026-09-09 -- Preservation: GitHub preservation and restoration contract
+**Feeds:** Reproducibility appendix and future continuation
+**Commit:** `95b5e63beb164c0bcc9a5bd9b1a283ec4045712a-dirty`
+**Artifacts:** `docs/RESTORE.md`
+
+### Numbers
+- RAG dry-run: 886 R1 region-A reviews, with level counts 534/352;
+  Gold-300/R2 exclusion passes. This rechecks existing inputs, not new results.
+- Preservation-time local interpreter: Python 3.13.3. The environment snapshot
+  is separate from all historical result runtimes and the existing lockfile.
+
+### Decisions made (and why)
+- Sabbir requested GitHub preservation so the thesis could be cloned and work
+  resumed later, and explicitly chose the same repository's Release assets
+  for data/model/archive backups. That is the stated motivation; no further
+  researcher reasoning is inferred.
+- Codex separated the uncommitted working-copy backup from reviewed source and
+  frozen final archives. Existing dirty-provenance analyses are preserved as
+  found, not promoted into canonical results during housekeeping. Local files
+  are not deleted by the preservation tool.
+
+### Findings (things we did not expect)
+- README previously said the raw workbook needed verification rather than a
+  backup, contradicting the dataset card's explicit backup requirement. README
+  now requires both exact-byte preservation and verification.
+- The local installed packages differ from requirements.lock.txt. A new,
+  separately named preservation snapshot records this without rewriting the
+  historical runtime evidence. The external LaBSE cache is not in a Git clone.
+
+### Consequences for downstream steps
+- Follow docs/RESTORE.md for clone plus asset verification. Raw placement is a
+  manual operator action; no repository script writes data/raw/. No S5 rerun,
+  result replacement, split change or scientific-method deviation occurred.
+- Upload/download verification and a clean dependency installation are distinct
+  gates. Their current state belongs in STATUS; neither is inferred from local
+  packaging or existing-environment tests.
+
+### Citations needed
+- Two Consensus searches with year_min=2025 covered code/data preservation and
+  model/environment reproducibility. The fetched Klonoff et al. (2026) record
+  confirmed pairing code releases with data snapshots and environment evidence;
+  no scientific design changed. Added to related_work.md and references.bib as
+  preservation infrastructure evidence, not an experimental-method citation.

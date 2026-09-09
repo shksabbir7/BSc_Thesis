@@ -37,9 +37,10 @@ log exists and the collector does not remember. See
   SHA-256  8f972734fc3629427cdf8d01716aa817f7b325410b2fdd0f26cbc2e68506db9f
   size     195,186 bytes
   ```
-  The file is re-downloadable from Mendeley, so the control is **verification,
-  not backup**. `bn_clean.csv` needs neither — it is deterministically
-  regenerable by `s1_clean.py`, which asserts n = 4,730.
+  Keep the exact workbook in a checksum-verified external backup. A fresh
+  download is usable only if its hash matches; availability at Mendeley is
+  not a backup guarantee. The cleaned CSV can be regenerated, but restoring
+  its verified copy avoids rewriting the historical S1 result.
 
 ## Layout
 ```
@@ -54,6 +55,12 @@ notebooks/ Kaggle/Colab runners ONLY (clone + install + call a script)
 ```
 
 ## Setup
+For an existing study checkout, start with [the restoration guide](docs/RESTORE.md).
+Cloning alone does not restore ignored data, trained Verifier-B or model caches.
+The commands below describe a deliberate **new environment**, not restoration
+of the historical experiment. Do not overwrite historical environment evidence
+while setting up a new machine.
+
 ```bash
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.in        # resolves to latest

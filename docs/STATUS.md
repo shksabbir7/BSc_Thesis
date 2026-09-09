@@ -1,5 +1,27 @@
 # STATUS — single source of truth for "where are we"
 
+**Last updated:** 2026-09-09 (preservation preparation only).
+
+## GitHub preservation — 2026-09-09
+
+Sabbir requested future clone-and-resume support and selected the same GitHub
+repository's Release assets for large/ignored data and artifacts. The repository
+is public. `docs/RESTORE.md` and `src/common/preserve_workspace.py` define a
+non-destructive backup/verification workflow. The local RAG dry-run passes with
+886 R1 reviews (534/352), excluding Gold-300/R2. The current local environment
+is recorded separately from the older lockfile and final-run environments.
+
+Existing uncommitted drafts, figures, conference/presentation work and two
+dirty-provenance analysis files are preservation inputs, not newly audited
+canonical results. They are retained in a diagnostic working-copy asset; this
+housekeeping step does not approve or ingest them. Release publication and
+remote download verification are pending. A clean dependency reinstall has
+not been tested. No original file has been deleted.
+
+
+---
+
+
 **Last updated:** 2026-08-26 (**The explicitly post-hoc RQ3 contrast is
 COMPLETE on 540 frozen exact pairs: `rag_neural_symbolic_feedback` minus
 `rag_neural_loop` is +0.02159 in Verifier-B target probability (naive

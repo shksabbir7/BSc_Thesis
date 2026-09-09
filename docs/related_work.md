@@ -789,6 +789,18 @@ submission BibTeX.
   itself is superior. arXiv:2606.30524.
 # Dataset citation closure (2026-08-23)
 
+## Preservation infrastructure check (2026-09-09)
+
+- **Klonoff et al. (2026), Research Code Sharing in Support of Gold Standard
+  Science**, Journal of Diabetes Science and Technology, 20, 609–619.
+  Two Consensus queries targeted 2025–2026: research-software archival
+  dependencies/data/code preservation, and machine-learning artifact/model/
+  environment preservation. The fetched paper record supports pairing
+  versioned code with cited data snapshots and environment-specific releases.
+  It confirmed the backup design; it did not alter the thesis method. Only the
+  paper record/abstract was checked, not a claimed full-text reading.
+  https://consensus.app/papers/details/4152944036f555fa8afe496e81cbf2a7/
+
 - **Hossain et al. (2026), Raw Bangla Movie Review Comment Dataset for
   Sentiment Analysis and Natural Language Processing.** Researcher-confirmed
   Mendeley Data V3 record, DOI `10.17632/vwp7gnj3d6.3`. This is the formal

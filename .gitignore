@@ -77,3 +77,10 @@ artifacts/verifier_b/
 # banner that explains what it is -- so it does not travel with the repo.
 # Regenerable from configs/s35_symbolic_pilot_idf.yaml in one command.
 artifacts/pilot_*
+
+# Local tooling and preservation bundles (release assets, never Git blobs).
+/.pnpm-store/
+/.pytest_cache/
+/.tmp/
+/.claude/
+/backup-release/
