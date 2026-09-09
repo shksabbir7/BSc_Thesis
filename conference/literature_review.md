@@ -1,0 +1,20 @@
+# II. Literature Review
+
+Prior work provides the main components used in this study, but under different tasks and evaluation settings. The closest comparisons are summarized below.
+
+| Work | Task and language | Retrieval | Revision signal | Symbolic diagnosis | Outcome scorer isolated from generation | Human validation |
+|---|---|---:|---|---:|---:|---:|
+| Mixture-of-Personas [@b9] | Population-conditioned text generation | No | Persona conditioning | No | No | Study-specific evaluation |
+| SimAB [@b10] | Persona-conditioned web A/B prediction | Context documents | Agent interaction | No | No | Historical outcomes and practitioner study |
+| FUDGE [@b11] | Controlled text generation | No | Learned discriminator during decoding | No | No | Task metrics |
+| Self-Refine [@b13] | Multi-task refinement | No | Same-model self-feedback | No | No | Task-dependent human and automatic evaluation |
+| Reflexion [@b14] | Reasoning, coding, and decision tasks | Task-dependent | Verbal feedback or memory | Verbal or heuristic | No | Benchmark outcomes |
+| HybridRAG-BN [@b19] | Bangla knowledge-base question answering | BM25 and BGE-M3 | Fine-tuned verifier and refiner | No | No | Competition token-F1 |
+| SymDiag [@b20] | Multi-step reasoning | No | Symbolic diagnosis supports repair | Yes | No isolated A/B wall | Manually audited diagnosis |
+| Evaluator Stress Tests [@b7] | RL and LLM alignment | No | Optimization against a proxy evaluator | No | Independent stress-test criteria | Task-specific evaluation |
+| Saleh et al. [@b21] | Repository documentation | Repository retrieval | Reviewer-mediated rewriting | No | No | Manual structural analysis and automatic metrics |
+| Present study | Bangla cinema-response generation | R1 level-specific exemplars | Verifier-A and bounded feedback | Deterministic diagnostic rules | Verifier-B outside the loop | Construct study and blinded output study |
+
+*Note.* The table is selective rather than exhaustive and does not rank study quality. A negative entry means only that the component lies outside the reported design. Evaluation methods differ across tasks and should not be treated as equivalent.
+
+The gap is not the absence of retrieval, verification, symbolic diagnosis, or role-based generation. None of the selected studies combines these mechanisms for short Bangla cinema responses with a human-validated construct, disjoint in-loop and outcome verifiers, compute-aware controls, and blinded native-speaker assessment. This study evaluates that combination without claiming that its individual components are new.

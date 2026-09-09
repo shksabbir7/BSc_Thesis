@@ -1,0 +1,3 @@
+# V. Conclusion
+
+Short Bangla cinema responses can be guided toward a human-recognizable engagement-specificity level while the outcome verifier remains outside generation. All registered alternatives improved Verifier-B target probability over zero-shot, and blinded readers usually recovered the requested level. The widening verifier gap during revision shows that gains against an in-loop score need not transfer at the same rate to a held-out instrument. Symbolic feedback remains an interpretable diagnostic, but its advantage over neural-only gating is exploratory. Future work should test plot faithfulness, broaden human evaluation, complete the separate English mirror, and examine other Bangla registers and generator families.

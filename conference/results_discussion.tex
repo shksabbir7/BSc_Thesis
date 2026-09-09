@@ -1,0 +1,53 @@
+\section{Results and Discussion}
+\label{sec:results}
+
+\subsection{Construct and Outcome Evidence}
+
+The initial full-corpus partition was not an audience taxonomy: it identified corpus region with 93.3\% accuracy. Within the retained region, geometric tests did not support discrete natural groups. In length-matched four-way intrusion trials, two annotators selected the intended contrast in 39/50 and 42/50 cases against a 0.25 chance rate; both reached 34/40 on the separate direction task. We therefore interpret Level~0 and Level~1 as points on an engagement-specificity continuum.
+
+All 5,400 registered outputs were present and received Verifier-B scores; no duplicate or extra keys were found, and Verifier-B was absent from the generation records. Table~\ref{tab:paired-results} reports the registered paired contrasts. All nine effects are positive, their bootstrap intervals exclude zero, and their Benjamini--Hochberg-adjusted resampling values reach the $2/10001$ resolution floor. These tests support improvement over zero-shot, not a ranking among the active conditions.
+
+\begin{table}[t]
+\centering
+\caption{Paired Verifier-B effects relative to zero-shot}
+\label{tab:paired-results}
+\footnotesize
+\setlength{\tabcolsep}{3.0pt}
+\renewcommand{\arraystretch}{1.04}
+\begin{tabularx}{\columnwidth}{@{}>{\raggedright\arraybackslash}Xcc@{}}
+\toprule
+\textbf{Condition} & \textbf{$\Delta p_B$} & \textbf{95\% CI} \\
+\midrule
+Static few-shot & 0.1451 & [0.1001, 0.1897] \\
+RAG-only & 0.1182 & [0.0753, 0.1618] \\
+Neural loop & 0.2354 & [0.1934, 0.2772] \\
+Symbolic loop & 0.1091 & [0.0649, 0.1524] \\
+Neural + symbolic feedback & 0.2570 & [0.2151, 0.2987] \\
+Intrinsic self-critique & 0.2147 & [0.1711, 0.2584] \\
+External-role self-critique & 0.1804 & [0.1381, 0.2231] \\
+Gemma-4 judge loop & 0.1715 & [0.1282, 0.2149] \\
+Blind resampling & 0.2087 & [0.1664, 0.2510] \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+Performance remained asymmetric by level. Zero-shot target accuracy was 0.3296 at Level~0 and 0.8074 at Level~1; neural gating with symbolic feedback raised these values to 0.7333 and 0.9593. Response length and target level remained entangled, so the experiment does not establish length-neutral control. The symbolic-only gate was also weak: at Level~1 it exhausted the three-attempt budget on 53.33\% of cases. Symbolic rules are better supported as diagnostic feedback than as an acceptance mechanism.
+
+The neural-plus-symbolic condition has the largest observed contrast with zero-shot, but its direct post-hoc difference from the neural-only loop is only $+0.02159$. The increment is concentrated at Level~0 ($+0.04328$; Level~1: $-0.00009$), and the binary discordance test gives $p=0.11728$. This exploratory result does not establish hybrid superiority.
+
+\subsection{Human Recognition and Proxy Divergence}
+
+The three annotators produced all 300 judgments on the balanced 100-item subset. Pooled target-level accuracy was 0.9133 (95\% item-bootstrap CI $[0.8667,0.9567]$), raw three-way agreement was 0.88, and nominal Krippendorff's $\alpha$ was 0.8405. Both requested levels received 137/150 correct judgments. The study therefore supports recognition of the requested level on this subset, not overall response quality, plot faithfulness, or audience prediction.
+
+Verifier separation exposed a different limitation. Figure~\ref{fig:verifier-divergence} shows the attempt trajectories and same-case gap changes. Among 147 neural-loop cases continuing from attempt 1 to 2, Verifier-A increased more than Verifier-B and widened their mean gap by 0.1828. The gap widened again by 0.1148 among the 67 cases continuing to attempt 3. Neural-plus-symbolic revisions show the same direction. These are failure-selected trajectories, so they do not prove reward hacking in every revision. They do show why the in-loop score cannot serve as its own final evidence: optimization changes the relationship between the visible proxy and the held-out instrument.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.96\textwidth]{verifier_divergence_diagnostics.png}
+\caption{Failure-selected verifier trajectories and same-case changes in the Verifier-A--Verifier-B gap. Later attempts contain only cases that failed earlier gates; the bars therefore describe continuing cases rather than population-wide effects.}
+\label{fig:verifier-divergence}
+\end{figure*}
+
+\subsection{Scope and Limitations}
+
+The target comes from one short-review corpus with unresolved collection provenance and a strong source-region confound. Length, sentiment, and specificity are not fully separable, and both verifiers learn the same operational label despite their disjoint data and different model families. Verifier-B is an outcome proxy rather than calibrated human ground truth. The human study uses three university peers and five items per condition-level cell, which is sufficient for pooled target recognition but not condition ranking. It does not evaluate fluency, naturalness, hallucination, harmful content, or resemblance to real viewers. The English mirror remains incomplete. The findings are therefore limited to controlled Bangla response generation under the tested plots, prompts, and generator family.

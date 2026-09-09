@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="330" viewBox="0 0 1200 330" role="img" aria-labelledby="title desc">
+  <title id="title">Verifier-isolated bounded generation workflow</title>
+  <desc id="desc">A plot and requested level pass through R1-only retrieval, a Writer, and a Critic. Verifier-A controls acceptance and symbolic rules provide diagnostics. Failed cases pass through a Reflector for at most three attempts. Sealed outputs are scored by Verifier-B outside the loop.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#263238"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#b3261e"/>
+    </marker>
+    <marker id="arrow-blue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#1565c0"/>
+    </marker>
+    <style>
+      .box { stroke-width: 2.5; rx: 10; ry: 10; }
+      .title { font: 700 20px Arial, sans-serif; fill: #17202a; text-anchor: middle; }
+      .body { font: 16px Arial, sans-serif; fill: #263238; text-anchor: middle; }
+      .small { font: 14px Arial, sans-serif; fill: #455a64; text-anchor: middle; }
+      .line { fill: none; stroke: #263238; stroke-width: 3; marker-end: url(#arrow); }
+      .revision { fill: none; stroke: #b3261e; stroke-width: 3; stroke-dasharray: 9 6; marker-end: url(#arrow-red); }
+      .outcome { fill: none; stroke: #1565c0; stroke-width: 3; stroke-dasharray: 9 6; marker-end: url(#arrow-blue); }
+      .label { font: 700 15px Arial, sans-serif; }
+    </style>
+  </defs>
+
+  <rect x="20" y="55" width="145" height="105" class="box" fill="#f7f7f7" stroke="#546e7a"/>
+  <text x="92" y="91" class="title">Input</text>
+  <text x="92" y="119" class="body">Plot + level</text>
+
+  <rect x="205" y="55" width="165" height="105" class="box" fill="#e8f1fb" stroke="#1565c0"/>
+  <text x="287" y="88" class="title">Researcher</text>
+  <text x="287" y="116" class="body">R1-only retrieval</text>
+  <text x="287" y="141" class="small">Top-10, same level</text>
+
+  <rect x="410" y="55" width="145" height="105" class="box" fill="#eaf6ea" stroke="#2e7d32"/>
+  <text x="482" y="91" class="title">Writer</text>
+  <text x="482" y="119" class="body">Generate draft</text>
+
+  <rect x="595" y="40" width="205" height="135" class="box" fill="#fff4df" stroke="#ef6c00"/>
+  <text x="697" y="77" class="title">Critic</text>
+  <text x="697" y="106" class="body">Verifier-A gate</text>
+  <text x="697" y="132" class="body">Symbolic diagnosis</text>
+  <text x="697" y="155" class="small">A decides; rules explain</text>
+
+  <rect x="845" y="55" width="145" height="105" class="box" fill="#f7eafa" stroke="#7b1fa2"/>
+  <text x="917" y="91" class="title" style="font-size:18px">Sealed output</text>
+  <text x="917" y="119" class="body">Bangla response</text>
+
+  <rect x="1030" y="40" width="150" height="135" class="box" fill="#e9f3ff" stroke="#1565c0"/>
+  <text x="1105" y="77" class="title">Verifier-B</text>
+  <text x="1105" y="106" class="body">Outcome only</text>
+  <text x="1105" y="132" class="small">Disjoint R2</text>
+  <text x="1105" y="154" class="small">Outside loop</text>
+
+  <rect x="610" y="230" width="175" height="80" class="box" fill="#fdecec" stroke="#b3261e"/>
+  <text x="697" y="263" class="title">Reflector</text>
+  <text x="697" y="289" class="body">Revision feedback</text>
+
+  <path d="M165 107 H205" class="line"/>
+  <path d="M370 107 H410" class="line"/>
+  <path d="M555 107 H595" class="line"/>
+  <path d="M800 107 H845" class="line"/>
+  <text x="821" y="30" class="label" fill="#2e7d32">PASS</text>
+
+  <path d="M990 107 H1030" class="outcome"/>
+  <text x="1010" y="30" class="label" fill="#1565c0">score</text>
+
+  <path d="M697 175 V230" class="revision"/>
+  <text x="717" y="210" class="label" fill="#b3261e">FAIL</text>
+  <path d="M610 270 H287 V160" class="revision"/>
+  <text x="447" y="258" class="label" fill="#b3261e">retry; max 3 attempts</text>
+</svg>

@@ -1,0 +1,26 @@
+\section{Introduction}
+\label{sec:introduction}
+
+Audience commentary becomes available only after viewers encounter a film, limiting its value during pre-release development. Large language models (LLMs) can generate plausible responses from a synopsis~\cite{b12}, but fluency establishes neither control of a requested characteristic nor credible prediction of audience reception. Synthetic-audience research also warns that generated proxies can be prompt-sensitive, reproduce social biases, and invite unsupported claims about human behaviour~\cite{b1}. The resulting question is whether a model can generate a specified kind of Bangla cinema response that people can recognize and an external evaluator can measure.
+
+BanglaBERT~\cite{b2} and multilingual LaBSE~\cite{b3} provide useful encoders, but not a validated control construct. The 5,000-row review corpus contains short, sentiment-labelled comments without movie identifiers or audience demographics~\cite{b4}. Its strongest apparent partition captured collection-region differences rather than discrete audience groups. We therefore rejected the persona interpretation and defined two levels along an engagement-specificity continuum: general or formulaic responses at Level~0, and responses engaging with a specific narrative detail at Level~1.
+
+Prompting for these levels does not show that they have been realized. Discriminator guidance~\cite{b11}, retrieval augmentation~\cite{b8}, and iterative revision offer possible controls, yet intrinsic self-correction remains unreliable without dependable external feedback~\cite{b5,b6}. Evaluation is also vulnerable when the scorer guiding revision reports the final result, since optimization may adapt the text to its weaknesses. Such proxy gaming can remain hidden without independent measurement~\cite{b7}.
+
+The bounded neuro-symbolic workflow assigns four functional roles rather than treating its agents as autonomous systems. A Researcher retrieves only from R1, a Writer produces a response, a Critic applies neural and symbolic checks, and a Reflector converts failures into revision guidance. A frozen LaBSE-based Verifier-A controls acceptance for at most three attempts. Verifier-B, a BanglaBERT model trained on disjoint R2 data, scores final outcomes and remains unavailable to the loop. This isolation reveals whether revision improves an independent measure or mainly the visible score.
+
+The experiment contains 5,400 responses for 90 held-out plots, two levels, ten conditions, and three paired seeds. All nine registered alternatives improved Verifier-B target probability over zero-shot after multiple-comparison correction. Neural gating with symbolic feedback produced the largest registered contrast, $+0.2570$ (95\% CI $[0.2151, 0.2987]$). Its $+0.0216$ advantage over neural-only gating was exploratory and does not establish hybrid superiority. Three blinded native-Bangla annotators recovered the requested level with $0.9133$ accuracy on 100 responses. Both verifiers improved during iteration, but Verifier-A rose faster, exposing proxy divergence rather than declining human quality.
+
+The main contributions of this work are as follows:
+
+\begin{enumerate}
+    \item The corpus audit replaces an unsupported audience-persona interpretation with a human-recognizable engagement-specificity continuum while retaining the negative clustering evidence.
+
+    \item The bounded Bangla generation workflow combines R1-only retrieval, neural acceptance, symbolic diagnostic feedback, and attempt-level traces.
+
+    \item Verifier isolation separates generation control from outcome evaluation through disjoint training partitions, enabling same-case measurement of proxy divergence.
+
+    \item The evaluation compares the framework with nine registered alternatives and supplements the computational results with a blinded human study.
+\end{enumerate}
+
+These contributions concern controllable text generation; they do not establish audience segments, actual audience reception, or film-performance prediction.
