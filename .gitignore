@@ -84,3 +84,4 @@ artifacts/pilot_*
 /.tmp/
 /.claude/
 /backup-release/
+/tmp/
