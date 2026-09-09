@@ -9,7 +9,8 @@ original generation archives. A clone alone cannot run the full workflow.
 
 Repository: <https://github.com/alphapie77/BSc_Thesis>
 
-Release assets: <https://github.com/alphapie77/BSc_Thesis/releases>
+Verified preservation release:
+<https://github.com/alphapie77/BSc_Thesis/releases/tag/preservation-2026-09-09>
 
 Use the release identified in `docs/STATUS.md`; do not assume a release has
 been uploaded merely because locally prepared files exist. Download its
@@ -80,7 +81,7 @@ packages are platform-dependent; a Windows freeze is not a Linux environment
 specification. For a historical scoring step, use that step's own recorded
 runtime and producing commit, not the preservation environment.
 
-Node.js 22 or later is required by the Windows launcher. Install the frontend
+Node.js 22.13.0 or later is required by `interface/package.json`. Install the frontend
 from its committed lockfile:
 
 ```powershell
@@ -99,13 +100,13 @@ The observed local LaBSE cache revision was
 the offline launcher, using the restored Python environment:
 
 ```powershell
-.venv/Scripts/python.exe -c "from src.common.seed import set_seed; set_seed(); from huggingface_hub import snapshot_download; snapshot_download('sentence-transformers/LaBSE', revision='836121a0533e5664b21c7aacc5d22951f2b8b25b')"
+.venv/Scripts/python.exe -c "from src.common.seed import set_seed; set_seed(); from pathlib import Path; from huggingface_hub import snapshot_download; revision='836121a0533e5664b21c7aacc5d22951f2b8b25b'; snapshot=Path(snapshot_download('sentence-transformers/LaBSE', revision=revision)); refs=snapshot.parent.parent/'refs'; refs.mkdir(exist_ok=True); (refs/'main').write_text(revision, encoding='utf-8')"
 ```
 
-The application requests the model by repository name, so ensure that the
-cache's `main` reference resolves to that revision before offline startup.
-If a newer revision is cached, do not silently substitute it; resolve the
-cache/configuration explicitly and revalidate the index.
+The application requests the model by repository name. This command explicitly
+points the cache's `main` reference at the downloaded, pinned revision so offline
+startup can resolve it. Run it in the restoration environment; it changes the
+local LaBSE cache reference and does not change Hugging Face's remote branch.
 
 If the restored Chroma index is incompatible with the installed Chroma version,
 build a new index in a separate checkout from the restored cleaned data using:

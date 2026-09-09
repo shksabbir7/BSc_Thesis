@@ -5939,6 +5939,21 @@ no scientific generation rerun occurred.
   Gold-300/R2 exclusion passes. This rechecks existing inputs, not new results.
 - Preservation-time local interpreter: Python 3.13.3. The environment snapshot
   is separate from all historical result runtimes and the existing lockfile.
+- Validation: 18 existing split/RAG/demo tests and 3 preservation integrity
+  tests passed. A fresh clone from GitHub then passed the same 21 tests after
+  restoring and hash-checking 14 missing cleaned-data/index/model files. Raw
+  data and tracked results were not written by the restore smoke check.
+- Full DemoService artifact initialization also passed in the fresh clone,
+  using the existing Python environment and existing external LaBSE cache.
+  A dummy API credential was used solely for construction; no hosted model,
+  generation or scoring request was made. This is not a clean-machine install
+  test. An earlier readiness process exited without diagnostics; the subsequent
+  unbuffered run completed successfully.
+- All eight Release assets (seven payloads and manifest.json) were uploaded,
+  downloaded from GitHub, and SHA-256 verified before publication. Release:
+  https://github.com/alphapie77/BSc_Thesis/releases/tag/preservation-2026-09-09
+  at source/tooling commit `83347e2`. The working-copy asset is separately
+  labelled diagnostic and is not claimed to be that commit's source tree.
 
 ### Decisions made (and why)
 - Sabbir requested GitHub preservation so the thesis could be cloned and work

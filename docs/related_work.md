@@ -789,6 +789,12 @@ submission BibTeX.
   itself is superior. arXiv:2606.30524.
 # Dataset citation closure (2026-08-23)
 
+- **Hossain et al. (2026), Raw Bangla Movie Review Comment Dataset for
+  Sentiment Analysis and Natural Language Processing.** Researcher-confirmed
+  Mendeley Data V3 record, DOI `10.17632/vwp7gnj3d6.3`. This is the formal
+  citation for the primary 5,000-row review resource; the local workbook hash
+  remains the authority for the exact bytes and row identities used.
+
 ## Preservation infrastructure check (2026-09-09)
 
 - **Klonoff et al. (2026), Research Code Sharing in Support of Gold Standard
@@ -800,9 +806,3 @@ submission BibTeX.
   It confirmed the backup design; it did not alter the thesis method. Only the
   paper record/abstract was checked, not a claimed full-text reading.
   https://consensus.app/papers/details/4152944036f555fa8afe496e81cbf2a7/
-
-- **Hossain et al. (2026), Raw Bangla Movie Review Comment Dataset for
-  Sentiment Analysis and Natural Language Processing.** Researcher-confirmed
-  Mendeley Data V3 record, DOI `10.17632/vwp7gnj3d6.3`. This is the formal
-  citation for the primary 5,000-row review resource; the local workbook hash
-  remains the authority for the exact bytes and row identities used.

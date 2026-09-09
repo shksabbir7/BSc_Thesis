@@ -1,6 +1,6 @@
 # STATUS — single source of truth for "where are we"
 
-**Last updated:** 2026-09-09 (preservation preparation only).
+**Last updated:** 2026-09-09 (GitHub preservation verified).
 
 ## GitHub preservation — 2026-09-09
 
@@ -14,10 +14,22 @@ is recorded separately from the older lockfile and final-run environments.
 Existing uncommitted drafts, figures, conference/presentation work and two
 dirty-provenance analysis files are preservation inputs, not newly audited
 canonical results. They are retained in a diagnostic working-copy asset; this
-housekeeping step does not approve or ingest them. Release publication and
-remote download verification are pending. A clean dependency reinstall has
-not been tested. No original file has been deleted.
+housekeeping step does not approve or ingest them.
 
+**Published and download-verified:**
+https://github.com/alphapie77/BSc_Thesis/releases/tag/preservation-2026-09-09
+The release is anchored to commit `83347e2`; all eight assets, including the
+manifest, were downloaded through GitHub and matched their local SHA-256.
+`docs/preservation_manifest_2026-09-09.json` is the tracked identity record.
+The diagnostic working-copy ZIP preserves 861 files; the data/model ZIP holds
+44 files. The original final S5 archives retain their registered hashes.
+
+A fresh GitHub clone passed 21 split/RAG/demo/preservation tests after 14
+missing runtime files were restored and hash-checked. Full demo artifact
+initialization also passed, using the existing Python environment and LaBSE
+cache, with no generation/scoring request. A clean dependency reinstall on a
+new machine has not been tested. Secrets and the external LaBSE cache require
+separate setup as described in RESTORE. No original file has been deleted.
 
 ---
 
