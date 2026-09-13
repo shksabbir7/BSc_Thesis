@@ -1,6 +1,13 @@
 # STATUS — single source of truth for "where are we"
 
-**Last updated:** 2026-09-09 (GitHub preservation verified).
+**Last updated:** 2026-09-13 (preservation and parallel-track counts reverified).
+
+**Parallel-track recheck — 2026-09-13:** The tracked evidence remains unchanged:
+plot synopses are frozen at 120 (30 development + 90 evaluation) from 124
+harvested and four human-review rejections; all six Tier-1 base papers have
+briefs, while Sabbir's direct reading remains zero; Gold-300 round 1 remains
+598/600 ratings (A 300, B 298) with ordinal alpha 0.4970 and is closed as an
+unreliable instrument. This check changes no data, result or method.
 
 **Supplementary preservation audit — 2026-09-09:** A complete local inventory
 found three useful files absent from GitHub: the anonymous 73-page report, the

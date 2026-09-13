@@ -1,0 +1,36 @@
+# Exploratory same-item comparison of the two instruments that measure requested
+# level: the registered automatic outcome (Verifier-B) and the blinded human
+# panel. Added during the Phase-3 thesis rewrite, after the registered nine
+# comparisons were known, to test one candidate explanation of the Level-0
+# asymmetry in the main table. It is NOT part of the frozen inferential family,
+# authorizes no generation or scoring rerun, and produces no ranking.
+step: S5.posthoc.instrument_agreement.bn
+seed: 42
+
+input:
+  verifier_b_scores_jsonl: results/s5_main_bn_verifier_b_scores.jsonl
+  human_responses_csv: results/s5_human_eval_bn_responses.csv
+  # Maps the blinded item identifier back to the frozen case key. Held outside
+  # results/ because it is the unblinding key for the human study.
+  researcher_key_csv: data/annotation/s5_human_eval_bn/researcher_key.csv
+
+instruments:
+  # Verifier-B is the registered primary outcome and is cut at its registered
+  # 0.5 binary decision point.
+  verifier_b_threshold: 0.5
+  # Verifier-A is reported only as a secondary instrument, at the operating
+  # point actually used inside the loop. It is not the outcome measure.
+  verifier_a_threshold: 0.4384071072784451
+  human_rule: majority_of_three_annotators
+
+analysis:
+  # Pool by requested level only. Per-condition cells hold five items and 15
+  # judgments, which the human study already declines to interpret separately;
+  # this analysis inherits that refusal rather than reopening it.
+  strata: [target_level]
+  refuse_per_condition_breakdown: true
+  binary_paired_test: exact_mcnemar
+  standing: descriptive_exploratory_not_in_confirmatory_family
+
+output:
+  result_json: results/s5_instrument_agreement_bn_v1.json

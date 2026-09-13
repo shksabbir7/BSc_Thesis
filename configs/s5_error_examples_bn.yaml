@@ -1,0 +1,75 @@
+# Rule-based selection of qualitative example outputs for Chapter 6 error
+# analysis. This is a reporting artifact over the frozen surface: it performs no
+# generation, no rescoring, and computes no new evaluation metric. Every quoted
+# output in the thesis must come from this file, so that examples are selected by
+# a stated rule rather than chosen by hand after reading them.
+step: S5.report.error_examples.bn
+seed: 42
+
+input:
+  cases_jsonl: results/s5_main_bn_cases.jsonl
+  scores_jsonl: results/s5_main_bn_verifier_b_scores.jsonl
+
+selection:
+  # One replicate only. Seed 42 is named here so the choice is registered rather
+  # than made while looking at the text; the other two replicates are pairing
+  # blocks, not independent studies, and quoting all three would triple the
+  # display without adding an independent observation.
+  replicate_seed: 42
+  # Within a stratum, order by case key and take the first. The key is
+  # S5BN|s<seed>|<plot_id>|L<level>|<condition>, so this is deterministic,
+  # independent of file order, and cannot be steered toward a flattering text.
+  tie_break: lexicographic_first_key
+  strata:
+    - id: E1
+      kind: single_condition
+      condition: zero_shot
+      target_level: 0
+      binary_success: 0
+      description: >-
+        Baseline failure at the low-specificity level: what an unconditioned
+        prompt produces when Level 0 is requested and Verifier-B disagrees.
+    - id: E2
+      kind: single_condition
+      condition: zero_shot
+      target_level: 1
+      binary_success: 0
+      description: >-
+        Baseline failure at the high-specificity level, for symmetry with E1.
+    - id: E3
+      kind: single_condition
+      condition: rag_neural_symbolic_feedback
+      target_level: 0
+      binary_success: 0
+      description: >-
+        A Level-0 failure that survives the full proposed condition, which is
+        the residual error the framework does not remove.
+    - id: E4
+      kind: single_condition
+      condition: rag_neural_symbolic_feedback
+      target_level: 1
+      binary_success: 0
+      description: >-
+        The same residual-failure question at Level 1.
+    - id: E5
+      kind: repair_pair
+      treatment: rag_neural_symbolic_feedback
+      comparator: zero_shot
+      target_level: 0
+      description: >-
+        A discordant pair in the direction that produces the registered effect:
+        the baseline fails and the proposed condition succeeds on the same plot,
+        level and replicate. Both texts are reported so the change is visible.
+    - id: E6
+      kind: single_condition
+      condition: rag_symbolic_loop
+      target_level: 1
+      binary_success: 0
+      gave_up: true
+      description: >-
+        Budget exhaustion: three Writer attempts under the symbolic gate without
+        clearing the threshold, so the emitted text is a best-of-three fallback
+        rather than an accepted output.
+
+output:
+  result_json: results/s5_error_examples_bn_v1.json
