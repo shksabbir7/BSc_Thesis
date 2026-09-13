@@ -85,3 +85,10 @@ artifacts/pilot_*
 /.claude/
 /backup-release/
 /tmp/
+
+# Preservation-only duplicate exports. Canonical revision sources and lowercase
+# chapter figure paths are versioned; these exact duplicates remain in the
+# verified working-copy Release.
+/docs/chapters/chapter6/Figs/
+/docs/chapters/revision_candidate/overleaf/
+/docs/chapters/revision_candidate/*_overleaf_updated.tex
