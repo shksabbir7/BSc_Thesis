@@ -1,6 +1,20 @@
 # STATUS — single source of truth for "where are we"
 
-**Last updated:** 2026-09-13 (preservation and parallel-track counts reverified).
+**Last updated:** 2026-09-13 (fresh-clone deletion-readiness gate recorded).
+
+**Deletion-readiness gate — 2026-09-13:** A direct GitHub clone at `d941ff9`
+and fresh downloads of all ten Release assets reproduced the preserved
+workspace. Both downloaded manifests matched their tracked copies; every asset
+and ZIP member passed hash/size verification. Guarded restoration placed 31
+missing files and confirmed 13 existing matches without overwriting anything.
+A clean Python 3.13 environment installed all 171 pinned packages, passed
+`pip check`, passed 21 core tests, and passed the 886-row R1-only dry-run. A
+clean lockfile frontend install and production build also passed. Fresh demo
+startup reached LaBSE weight loading from the external pinned cache and restored
+index, then this Windows host stopped it with paging-file error 1455. This is a
+host virtual-memory limit, not missing preserved material. GitHub plus the two
+recorded Releases are sufficient to recover the thesis workspace; secrets must
+be recreated and hosted services remain external.
 
 **Parallel-track recheck — 2026-09-13:** The tracked evidence remains unchanged:
 plot synopses are frozen at 120 (30 development + 90 evaluation) from 124
@@ -48,12 +62,13 @@ manifest, were downloaded through GitHub and matched their local SHA-256.
 The diagnostic working-copy ZIP preserves 861 files; the data/model ZIP holds
 44 files. The original final S5 archives retain their registered hashes.
 
-A fresh GitHub clone passed 21 split/RAG/demo/preservation tests after 14
-missing runtime files were restored and hash-checked. Full demo artifact
-initialization also passed, using the existing Python environment and LaBSE
-cache, with no generation/scoring request. A clean dependency reinstall on a
-new machine has not been tested. Secrets and the external LaBSE cache require
-separate setup as described in RESTORE. No original file has been deleted.
+A fresh GitHub clone passed 21 split/RAG/demo/preservation tests after the
+required runtime files were restored and hash-checked. The earlier full demo
+artifact initialization passed with the existing environment. The later clean
+dependency reinstall and frontend production build also passed; clean demo
+startup reached cached LaBSE weight loading before this host's paging-file limit
+stopped it. Secrets and hosted access require separate setup as described in
+RESTORE. No original thesis file was deleted by the preservation workflow.
 
 ---
 

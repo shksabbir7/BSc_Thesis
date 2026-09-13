@@ -85,10 +85,13 @@ py -3.13 -m venv .venv
 .venv/Scripts/python.exe -m src.agents.build_index --config configs/s4_index.yaml --dry-run
 ```
 
-The dependency install on a clean new machine must still be tested. Some
-packages are platform-dependent; a Windows freeze is not a Linux environment
-specification. For a historical scoring step, use that step's own recorded
-runtime and producing commit, not the preservation environment.
+This clean-install path was exercised on 2026-09-13 in a fresh GitHub clone
+with Python 3.13. All 171 pinned packages installed, `pip check` reported no
+broken requirements, the 21 core tests passed, and the RAG dry-run reported
+886 R1 rows (534/352) with no R2 or Gold-300 IDs. Some packages remain
+platform-dependent; a Windows freeze is not a Linux environment specification.
+For a historical scoring step, use that step's own recorded runtime and
+producing commit, not the preservation environment.
 
 Node.js 22.13.0 or later is required by `interface/package.json`. Install the frontend
 from its committed lockfile:
@@ -96,8 +99,14 @@ from its committed lockfile:
 ```powershell
 cd interface
 npm ci
+npm run build
 cd ..
 ```
+
+The same fresh clone passed a production frontend build on 2026-09-13. The
+host's global `npm` launcher was damaged, so the test invoked the official npm
+10.9.2 CLI with Node.js 22.17.1; this was a host-tool repair issue rather than a
+repository or lockfile failure. Reinstall npm if `npm --version` itself fails.
 
 Do not commit `.venv`, `node_modules`, caches, local logs or credentials.
 
@@ -133,6 +142,30 @@ launcher verifies artifact readiness before opening the UI. Verifier-B is only
 for offline scoring and must never be loaded into the live loop. Hosted model
 availability and API access can change; a preserved repository cannot guarantee
 future hosted responses or reproduce their bytes.
+
+On the 2026-09-13 deletion-readiness test, the pinned LaBSE snapshot resolved
+from `C:\Users\acer\.cache\huggingface`, which is outside the thesis directory.
+The demo reached model-weight loading from the fresh clone and restored index,
+then Windows stopped the load with error 1455 because the paging file was too
+small. Increase the Windows paging-file limit (or use a machine with sufficient
+virtual memory) before running the live demo. This host limit does not affect
+the verified archive contents, tests, RAG isolation check or frontend build.
+
+## Deletion readiness
+
+On 2026-09-13 a direct clone of GitHub `main` at commit `d941ff9` was combined
+with fresh downloads of all eight primary and two supplementary Release assets.
+Both tracked manifests matched the downloaded manifests byte-for-byte, every
+asset and ZIP member passed SHA-256/size verification, and the data/model ZIP
+was restored entry by entry with path-containment and no-overwrite checks. The
+restore placed 31 missing files and confirmed 13 already matching files.
+
+After the final documentation commit is visible on GitHub, the original thesis
+directory can be deleted without losing the preserved project material. Future
+recovery still requires both the Git repository and the two Releases linked at
+the top of this document. API credentials are intentionally excluded and must
+be created again; hosted services themselves are outside this preservation
+guarantee.
 
 ## Updating the archive later
 

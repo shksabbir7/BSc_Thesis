@@ -6074,3 +6074,55 @@ no scientific generation rerun occurred.
 
 ### Citations needed
 - None. The rerun repairs provenance and introduces no estimator or method.
+
+---
+
+## 2026-09-13 -- Preservation: fresh-clone deletion-readiness gate
+**Feeds:** Reproducibility appendix and future continuation
+**Commit:** `d941ff95a6c041cb904fbe2eae48aeca4c1b9eec`
+**Artifacts:** `docs/RESTORE.md`, `docs/STATUS.md`
+
+### Numbers
+- A direct GitHub clone and fresh downloads covered all eight primary and two
+  supplementary Release assets. Both Release manifests matched their tracked
+  repository copies byte-for-byte; every registered asset and ZIP member passed
+  SHA-256 and size verification.
+- Guarded entry-by-entry restoration placed 31 missing files and confirmed 13
+  already matching files. It found zero destination mismatches.
+- A new Python 3.13 virtual environment installed all 171 packages in the
+  preservation requirements file. `pip check` found no broken requirements;
+  21 core tests passed in 13.29 seconds.
+- The restored RAG dry-run reported 886 R1 region-A rows, split 534/352, and
+  found no R2 or Gold-300 IDs. The frontend passed clean lockfile installation
+  and a production build with routes `/` and `/research`.
+
+### Decisions made (and why)
+- Sabbir asked for proof that the current thesis directory can be deleted
+  without losing work. The gate therefore used a new clone and newly downloaded
+  assets rather than trusting files already present in the working directory.
+- Archive extraction was constrained to contained relative paths and refused
+  existing files unless their hashes matched. This follows the registered
+  restore boundary and preserves the raw-data and frozen-split rules.
+
+### Findings (things we did not expect)
+- The machine's global npm launcher was damaged. The committed lockfile still
+  installed and built successfully when invoked with the official npm 10.9.2
+  CLI and Node.js 22.17.1.
+- Offline demo startup resolved the pinned LaBSE snapshot from the Hugging Face
+  cache outside the thesis directory and reached weight loading. Windows then
+  returned error 1455 because its paging file was too small. This is a host
+  resource limit rather than a missing code, index, model reference or archive
+  member.
+
+### Consequences for downstream steps
+- GitHub `main` plus the primary and supplementary preservation Releases can
+  reconstruct the preserved thesis workspace after the original directory is
+  deleted. The restore guide records the exact sequence and verified limits.
+- API secrets remain intentionally absent and must be recreated. A machine
+  running the optional live demo needs sufficient virtual memory and access to
+  the pinned LaBSE snapshot; neither condition changes frozen scientific
+  results or requires generation/scoring to be rerun.
+
+### Citations needed
+- None. This is an operational preservation verification and introduces no
+  scientific method or result.
