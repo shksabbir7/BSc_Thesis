@@ -1,16 +1,18 @@
 # Final thesis copy-edit checklist
 
-Checked on 2026-08-23 against the active Bangla-only chapter set.
+Checked on 2026-08-27 against the eight canonical Bangla-only chapters.
 
 ## Completed
 
-- Chapters 1--7 follow the agreed thesis sequence and use continuous section
+- Chapters 1--8 follow the agreed thesis sequence and use continuous section
   numbering.
-- All 14 planned main-text tables are placed: 1 in Chapter 1, 1 in Chapter 2,
-  3 in Chapter 3, 1 in Chapter 4, 2 in Chapter 5, 4 in Chapter 6, and 2 in
-  Chapter 7.
-- Five existing figure files resolve from their chapter references: Figures
-  4.1, 5.1, 5.2, 6.1, and 6.2.
+- All 28 canonical main-text tables are placed: none in Chapter 1, 1 in Chapter
+  2, 7 in Chapter 3, 6 in Chapter 4, 6 in Chapter 5, 6 in Chapter 6, 1 in
+  Chapter 7, and 1 in Chapter 8.
+- All eleven manifested figure files resolve from their chapter references:
+  Figures 3.1--3.3, 4.1--4.3, 5.1--5.2, and 6.1--6.3.
+- Algorithms 5.1 and 5.2 are present and listed separately from tables and
+  figures.
 - First-use expansions and the separate abbreviation list cover the principal
   technical abbreviations used in the chapters.
 - Active chapter citations resolve against `docs/references_ieee.bib`; the
@@ -26,8 +28,6 @@ Checked on 2026-08-23 against the active Bangla-only chapter set.
 
 ## Required before final LaTeX submission
 
-- Create and place Figures 3.1, 3.2, and 4.2. These remain planned, not
-  completed.
 - Apply the university's LaTeX class and fill the institution-specific legal
   front matter, approval/signature fields, acknowledgements, and pagination.
 - Compile the full document and perform page-by-page visual quality assurance
@@ -45,7 +45,6 @@ Checked on 2026-08-23 against the active Bangla-only chapter set.
   unavailable.
 - The institutional statement is limited to disclosed adult participation and
   consent; no formal ethics approval or exemption is claimed.
-- The planned recent-literature recheck could not be extended through
-  Consensus after its available query quota was exhausted. Existing verified
-  citations were retained, and no unverified citation was added to fill the
-  gap.
+- Literature-search provenance and any index substitution remain documented in
+  the research audit; no unverified citation is added merely to increase the
+  bibliography.

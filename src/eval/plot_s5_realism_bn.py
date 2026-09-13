@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the S5 Bangla corpus-level realism diagnostics from frozen tables."""
+"""Render the S5 Bangla corpus-distribution diagnostics from frozen tables."""
 from __future__ import annotations
 
 import argparse
@@ -77,7 +77,7 @@ def build_figure(lengths: pd.DataFrame, diversity: pd.DataFrame, mauve: pd.DataF
             ax.set_xlim(*limits)
     axes[0].set_yticks(y, [LABELS[c] for c in CONDITIONS], fontsize=8)
     axes[0].legend(loc="lower right", fontsize=8)
-    fig.suptitle("S5 Bangla corpus-level realism diagnostics (n=270 generated per cell)",
+    fig.suptitle("Bangla corpus-distribution diagnostics (n = 270 generated per cell)",
                  fontsize=13, fontweight="bold")
     fig.subplots_adjust(left=.15, right=.985, top=.87, bottom=.16, wspace=.08)
     fig.text(.5, .055,
@@ -86,7 +86,7 @@ def build_figure(lengths: pd.DataFrame, diversity: pd.DataFrame, mauve: pd.DataF
              ha="center", va="center", fontsize=8, color="#374151")
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=220, metadata={"Software": "thesis/plot_s5_realism_bn.py",
-                                           "Title": "S5 Bangla realism figure",
+                                           "Title": "Bangla corpus-distribution diagnostics",
                                            "Description": f"git_commit={provenance['git_commit']}"})
     plt.close(fig)
 

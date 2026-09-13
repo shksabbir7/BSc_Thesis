@@ -6,14 +6,14 @@ numeric citations such as `[1]` and `[2]`; the letter `b` is not printed.
 
 > **SUPERSEDED SNAPSHOT.** This page preserves the earlier 29-source core audit
 > and must not be used as the current key authority. The active seven chapters
-> cite 55 unique sources; the thesis library contains 143 entries. Use
+> cite 60 unique sources; the thesis library contains 143 entries. Use
 > `docs/reference_key_map_full.csv` for the current `b` keys, metadata standing,
 > identifiers, and cited/uncited status.
 
 This page documents the historical 29 chapter-cited core records in readable form. The
-complete machine-auditable map for **all 141 records (`b1`--`b141`)** is
-`docs/reference_key_map_full.csv`. Keys `b30`--`b141` consolidate the unique
-records from the earlier 127-entry research registry after DOI/eprint/title
+complete machine-auditable map for **all 143 records (`b1`--`b143`)** is
+`docs/reference_key_map_full.csv`. Keys `b30`--`b143` consolidate the unique
+records from the earlier research registry after DOI/eprint/title
 deduplication; the registry itself remains unchanged as an audit trail.
 
 | Key | Short reference | Verification source/status | Primary thesis use |
@@ -52,7 +52,7 @@ deduplication; the registry itself remains unchanged as an audit trail.
 
 - The first pass incorrectly described the 29 currently cited records as the
   complete bibliography. The corrected consolidation retains those stable keys
-  and appends all 112 unique research-registry records as `b30`--`b141`.
+  and appends all 114 unique research-registry records as `b30`--`b143`.
 - Forty arXiv discovery records had their author lists resolved through
   alphaXiv metadata. Twenty-one abbreviated non-arXiv author lists were checked
   against publisher, proceedings, or primary-paper metadata. The canonical

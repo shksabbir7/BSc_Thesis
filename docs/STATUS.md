@@ -57,8 +57,11 @@ separate setup as described in RESTORE. No original file has been deleted.
 
 ---
 
-
-**Last updated:** 2026-08-26 (**The explicitly post-hoc RQ3 contrast is
+**Last updated:** 2026-08-27 (**Active thesis RQ3 is now a functional-role
+question distinguishing symbolic acceptance gating from symbolic diagnostic
+feedback. This reporting refinement was made after results and is recorded in
+the protocol; the frozen hybrid-accuracy hypothesis, registered comparisons and
+exploratory standing are unchanged.**) (**The explicitly post-hoc RQ3 contrast is
 COMPLETE on 540 frozen exact pairs: `rag_neural_symbolic_feedback` minus
 `rag_neural_loop` is +0.02159 in Verifier-B target probability (naive
 post-selection 95% CI [0.00082, 0.04310]) and +0.02037 in binary target
@@ -204,6 +207,22 @@ can equal 1.0. Next: finish the resumable trace/frontier runner and run it.
 > only place progress is recorded.
 
 ---
+
+**Canonical chapter structure (2026-08-27):** Chapters 1–8 now use one
+folder-based path each under `docs/chapters/`, and
+`docs/thesis_assembly_order.md` points only to those paths. Former flat Chapter
+1–8 files were preserved under `docs/chapters/archive/flat_drafts/`; the archive
+is excluded from assembly and retains pre-existing work rather than silently
+discarding it. Chapter 1 was subsequently restored to the concise nine-section
+academic structure developed in the earlier folder draft and updated only where
+the completed study required it: the four current RQs, six bounded
+contributions, final design counts, and eight-chapter organization. The two
+administrative mapping tables from the expanded flat draft remain archived and
+are excluded from the canonical introduction. Chapter 2 was likewise restored
+to its concise ten-section related-work structure; its expanded review-process
+narrative remains archived, while the canonical comparison table retains the
+more precise, study-bounded terminology from the later audit. No result,
+citation, or inference was changed by this editorial consolidation.
 
 ## Pipeline steps
 

@@ -25,8 +25,8 @@ negative clusterability result rather than silently rewriting it as discovery.
 | RQ | Current question | Evidential status | Defensible one-sentence answer | Main chapter |
 |---|---|---|---|---|
 | RQ1 | Can a meaningful response distinction be recovered from unlabeled Bangla reviews and validated as stable and human-recognizable? | **Qualified support** | A reproducible Region-A cut is human-recognizable as engagement specificity under length-matched comparative judgment, but it is a continuum cut rather than a discovered persona/cluster and does not replicate structurally in Region B. | 3 |
-| RQ2 | Does an external trained verifier improve target-level controllability over zero-shot, few-shot, RAG-only and self-critique baselines? | **Supported within the completed Bangla arm, with attribution limits** | Verifier-guided conditions improve held-out Verifier-B target scores over zero-shot and requested levels are human-recoverable, but several non-verifier controls also improve and the study does not establish audience prediction. | 6–7 |
-| RQ3 | Does adding symbolic validation improve on neural-only and symbolic-only mechanisms? | **Mixed / incremental value unresolved** | Symbolic-only gating is weak; neural gating with symbolic feedback performs strongly, but no registered neural-plus-symbolic versus neural-only inferential contrast exists, so hybrid superiority cannot be claimed. | 5–7 |
+| RQ2 | To what extent do verifier-guided generation and the registered prompting, RAG, self-critique, external-judge and resampling controls improve target-level controllability over zero-shot generation in Bangla? | **Supported within the completed Bangla arm, with attribution limits** | All nine registered active conditions improve out-of-loop Verifier-B target scores over zero-shot and requested levels are human-recoverable, but the result does not identify the verifier as the sole cause, establish active-condition superiority or support audience prediction. | 6–7 |
+| RQ3 | What role does symbolic information play when used for acceptance gating and for diagnostic feedback within verifier-guided Bangla response generation? | **Roles differentiated / incremental value remains exploratory** | Symbolic-only acceptance gating is weak, whereas symbolic rules remain useful for diagnostic revision guidance under a neural gate; the combined condition performs strongly against zero-shot, but its incremental advantage over neural-only remains exploratory. | 5–7 |
 | RQ4 | Does iteration against Verifier-A create measurable divergence from an independent Verifier-B? | **Supported as a diagnostic, not human-quality decline** | On continuing failed cases, neural-loop revisions widen the A–B score gap in the direction expected under proxy overoptimization; Verifier-B is an independent held-out proxy, not ground truth. | 6–7 |
 
 ## RQ1 — construct recovery and human recognizability
@@ -64,11 +64,20 @@ property of the algorithmic cut, not proof of natural categories.
 
 ### Thesis presentation
 
-- Table 3.1: data audit and source-confound results.
-- Figure 3.1: frozen G/R1/R2 data lineage and isolation walls.
-- Figure 3.2: multi-panel clusterability, stability and confound diagnostics.
-- Table 3.2: Region-A/Region-B axis evidence and negative control.
-- Table 3.3: ordinal-instrument failure and comparative-validation success.
+- Table 3.1: frozen data lineage, partition composition and isolation walls.
+- Table 3.2: read-only audit of the eleven registered S0 claims.
+- Table 3.3: S1 cleaning cascade in execution order.
+- Table 3.4: near-duplicate threshold sensitivity of the sentiment trap-check.
+- Table 3.5: the two-corpus source signature — register profile and the four
+  structural impossibilities.
+- Table 3.6: clusterability and stability sweep, K = 2 to 8, both regions.
+- Table 3.7: Region-A axis evidence against the Region-B negative control.
+- Table 3.8: human validation — ordinal-instrument failure and
+  comparative-validation success.
+- Figure 3.1 (frozen data lineage) and Figure 3.2 (clusterability diagnostics)
+  are **deferred** (Sabbir, 2026-08-25). Their content is carried by Tables 3.1,
+  3.6 and 3.7, and the deferral is stated in the chapter text at both points, so
+  no claim depends on a figure that does not exist.
 
 ## RQ2 — external verification and controllability
 
@@ -93,7 +102,8 @@ property of the algorithmic cut, not proof of natural categories.
 
 RQ2 is supported for Bangla axis-level controllability. Because few-shot, RAG,
 self-critique, hosted judging and blind resampling also improve over zero-shot,
-the result does not show that only the proposed loop works. Verifier scores
+the result does not show that only the proposed loop works or that it is
+inferentially superior to another active condition. Verifier scores
 measure reproduction of the constructed label; human judgments establish
 recoverability of the requested level, not audience prediction, general quality
 or plot faithfulness over all 5,400 outputs.
@@ -107,7 +117,7 @@ or plot faithfulness over all 5,400 outputs.
 - Table 6.2: nine planned paired comparisons against zero-shot.
 - Table 6.3: blinded human-validation summary, kept separate from system ranking.
 
-## RQ3 — neural and symbolic validation
+## RQ3 — symbolic acceptance gating and diagnostic feedback
 
 ### Load-bearing evidence
 
@@ -119,22 +129,27 @@ or plot faithfulness over all 5,400 outputs.
 - Main experiment: `results/s5_main_bn_master_table.csv`. Symbolic-only gating
   is weak and costly, especially at Level 1; neural-plus-symbolic feedback has
   the largest registered effect against zero-shot.
-- Inferential limitation: the frozen family contains no direct
-  neural-plus-symbolic versus neural-only contrast.
+- Inferential limitation: the frozen confirmatory family contains no direct
+  neural-plus-symbolic versus neural-only contrast. A later exploratory paired
+  analysis uses the 540 already-frozen exact pairs and remains outside that
+  family.
 
 ### Claim boundary
 
 Symbolic diagnostics are defensible as feedback that names observable failure
-modes. They are not established as an independently predictive gate, and the
-incremental causal benefit of symbolic feedback beyond the neural loop remains
-unresolved. No post-hoc superiority test is added.
+modes. They are not established as an independently predictive gate. The
+exploratory hybrid-minus-neural comparison estimates a +0.02159 target-
+probability difference and +0.02037 binary-accuracy difference over 540 frozen
+pairs; the probability estimate is concentrated at Level 0, while the exact
+McNemar test for the binary contrast gives p=0.11728. This analysis does not
+establish an incremental causal advantage or overall hybrid superiority.
 
 ### Thesis presentation
 
 - Table 5.2 or Appendix: weight-sensitivity outcomes and unresolved verdict.
 - Table 6.1: descriptive neural-only, symbolic-only and combined cells.
-- Chapter 7: explicit distinction between strong combined performance and
-  unproven incremental symbolic benefit.
+- Chapters 7–8: explicit distinction between strong combined performance,
+  exploratory incremental evidence and unestablished hybrid superiority.
 
 ## RQ4 — verifier divergence and Goodhart diagnostic
 
@@ -178,6 +193,8 @@ reported beside the diagnostic.
 
 - [x] Replace the obsolete persona wording in the normative pipeline through an
   explicit dated amendment; historical protocol remains unchanged.
-- [x] Render the summary map as Chapter 1 Table 1.1.
-- [x] Render the final bounded answers as Chapter 7 Table 7.2.
+- [x] Retain this detailed map as an audit artifact; state the four research
+  questions directly in the concise Chapter 1 rather than duplicating their
+  later answers in an introductory table.
+- [x] Render the final bounded answers as Chapter 8 Table 8.1.
 - [x] Use the artifact list above to build figure/table manifests.

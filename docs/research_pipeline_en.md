@@ -697,10 +697,13 @@ independent evaluation wall.*
 **1.4 Research questions:**
 - **RQ1:** Can a meaningful response distinction be recovered from unlabeled
   Bangla reviews and validated as stable and human-recognizable?
-- **RQ2:** Does an external trained verifier improve target-level controllability
-  over zero-shot, few-shot, RAG-only, and self-critique baselines?
-- **RQ3:** Does adding symbolic validation improve on neural-only and
-  symbolic-only mechanisms?
+- **RQ2:** To what extent do verifier-guided generation and the registered
+  prompting, retrieval-augmented generation (RAG), self-critique,
+  external-judge, and resampling controls improve target-level controllability
+  over zero-shot generation in Bangla?
+- **RQ3:** What role does symbolic information play when used for acceptance
+  gating and for diagnostic feedback within verifier-guided Bangla response
+  generation?
 - **RQ4:** Does iteration against Verifier-A create measurable divergence from
   an independent Verifier-B?
 
@@ -709,9 +712,11 @@ independent evaluation wall.*
 > as a completed low-resource comparison. Those words conflict with the audited
 > outcomes: the operational object is a human-recognizable two-level cut through
 > an engagement-specificity continuum, and the English mirror is deferred. The
-> current wording above matches `docs/STATUS.md` and
-> `docs/thesis_rq_evidence_map.md`. Historical pre-registration remains intact in
-> `docs/protocol.md`.
+> current wording above also limits RQ2's confirmatory comparison to the frozen
+> condition-versus-zero-shot family; active-condition orderings remain
+> descriptive. It matches `docs/STATUS.md` and
+> `docs/thesis_rq_evidence_map.md`. Historical pre-registration remains intact
+> in `docs/protocol.md`.
 
 **1.5 Objectives:** one operational line per RQ (from protocol.md).
 

@@ -184,6 +184,60 @@ predictable from the literature and the literature was not read.**
 - Bangla text: never transliterate, never "normalize" characters beyond
   whitespace. Preserve the original script exactly.
 
+## Thesis writing voice — standing instruction from Sabbir (2026-09-01)
+
+Write the thesis in natural academic English that sounds like a researcher
+explaining work they understand, not like a generated checklist, protocol log,
+or extended abstract.
+
+- Prefer direct, thesis-specific subjects such as the Bangla review corpus,
+  engagement specificity, R1/R2, and Verifier-A/Verifier-B over vague phrases
+  such as *these components*, *the present setting*, or *the proposed approach*.
+- Use a natural mixture of short and medium-length sentences. Avoid repeated
+  sentence templates and long strings of equally weighted clauses.
+- Do not rely on formulaic scaffolding such as *First, Second, Third*,
+  *Accordingly*, *Two design principles follow*, or *Together, these
+  contributions* when the logical connection can be stated directly.
+- Use technical qualifiers such as *bounded*, *auditable*, *operational*,
+  *registered*, and *isolated* only where they carry necessary scientific
+  meaning; do not repeat them as stylistic decoration.
+- Keep results, interpretation, and limitations distinct. State necessary claim
+  boundaries once in the appropriate place instead of appending a defensive
+  disclaimer to every paragraph.
+- Objectives and contributions should read as clear sentences. Do not add
+  mechanical annotations such as `(RQ3)` or list endings such as `; and` unless
+  Sabbir specifically requests them. Maintain the conceptual one-to-one mapping
+  between objectives and research questions without printing that mapping in
+  every item.
+- Prefer plain language without sacrificing scientific precision. Do not
+  overclaim, but do not bury every finding under repetitive caution.
+- Avoid repeating the chapter opening in the chapter summary. Openings should
+  orient the reader; summaries should close the argument and lead naturally to
+  the next chapter.
+- Keep Markdown and LaTeX versions synchronized. The university template
+  controls bibliography presentation; chapter fragments use standard citation
+  commands and must not impose a conflicting bibliography package or style.
+- Treat table readability as a submission requirement. Do not use
+  `\resizebox{\textwidth}{!}{...}` merely to force a wide table onto a portrait
+  page when it makes the text too small to read.
+- This is a single-column university thesis, so do not copy `table*` layouts
+  from two-column papers. For genuinely wide comparison tables, prefer a
+  landscape `sidewaystable` with wrapping `tabularx` columns, a readable font
+  size, sensible `\tabcolsep`, and modest `\arraystretch`.
+- Keep table captions, labels, notes, headers, citations, and all scientific
+  rows intact when changing layout. A visually improved table must not silently
+  alter its evidence or comparison categories.
+- Cross-reference every numbered table, figure, section, chapter, and equation
+  through its LaTeX label (for example, `Table~\ref{...}` and
+  `Figure~\ref{...}`). Never hard-code a displayed number such as `Table 2.1`
+  in running text, because numbering may change during revision.
+- Avoid globally defining generic column types such as `Y` inside chapter
+  fragments, because another chapter or the university template may define the
+  same name. Use an explicit column specification or a project-specific type.
+- Before introducing a LaTeX environment or command, check the university
+  preamble. State any required package clearly, reuse packages already loaded,
+  and do not load conflicting bibliography or float systems in a chapter file.
+
 ## Known facts about the data (to be VERIFIED in Step 2, not assumed)
 
 The pipeline's S0 table claims: 5,000 rows; labels 1665/1664/1670; 204 exact

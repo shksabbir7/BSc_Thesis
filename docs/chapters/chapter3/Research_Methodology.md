@@ -214,6 +214,14 @@ cluster-size balance. HDBSCAN provided a density-based check that did not requir
 a fixed K [@b41; @b42]. All clustering was performed in the original embedding
 space rather than a visualization projection.
 
+The prediction-strength decision threshold was fixed at 0.80 before the
+candidate K table was computed. Tibshirani and Walther describe 0.80--0.90 as a
+practical threshold range and select the largest K above the chosen threshold
+[@b38]. This study pre-specified the lower endpoint of that range; it was not
+estimated from the observed K table. Because the cited recommendation was
+demonstrated primarily for well-separated clusters, crossing 0.80 was treated
+as a reproducibility screen rather than evidence of natural cluster structure.
+
 The diagnostics answer different questions and were not combined into a single
 post-hoc score. Prediction strength and bootstrap ARI assess reproducibility;
 silhouette and the gap statistic assess separation; HDBSCAN tests whether a
@@ -257,11 +265,15 @@ personas.*
 
 For Region A, K=2 was the only solution to clear the registered prediction-
 strength threshold of 0.80, reaching 0.8605 with bootstrap ARI 0.9399 ± 0.0290.
-The cut was not identical to sentiment (ARI=0.1522). These stability results did
-not establish discrete structure: silhouette was only 0.0534, the gap statistic
-selected no K, and HDBSCAN labelled all points as noise. The correct geometric
-interpretation is therefore a reproducible bisection of a continuum rather than
-two naturally separated groups.
+The observed prediction strength lies between the two endpoints discussed by
+Tibshirani and Walther: it clears the registered 0.80 rule but would not clear a
+0.90 rule. The selection is therefore conditional on the pre-specified cutoff,
+not threshold-invariant evidence. The cut was not identical to sentiment
+(ARI=0.1522). These stability results did not establish discrete structure:
+silhouette was only 0.0534, the gap statistic selected no K, and HDBSCAN labelled
+all points as noise. The correct geometric interpretation is therefore a
+reproducible bisection of a continuum rather than two naturally separated
+groups.
 
 Profiling showed that length was an important but incomplete component of the
 cut. Word count recovered the assigned level with AUC 0.6764. The longer half

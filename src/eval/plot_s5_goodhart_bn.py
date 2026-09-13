@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Render the registered S5 Bangla Goodhart figure from frozen tables."""
+"""Render the registered S5 Bangla verifier-divergence figure from frozen tables."""
 from __future__ import annotations
 
 import argparse
@@ -66,7 +66,7 @@ def build_figure(attempts: pd.DataFrame, transitions: pd.DataFrame,
                         xytext=(0, label_shift), textcoords="offset points", ha="center",
                         fontsize=7, color=color)
     ax.annotate("all n=540", (1, attempts.loc[attempts["attempt"] == 1, "mean_verifier_b"].mean()),
-                xytext=(0, -18), textcoords="offset points", ha="center", fontsize=8,
+                xytext=(10, -18), textcoords="offset points", ha="left", fontsize=8,
                 color="#374151")
     ax.set(title="A. Descriptive attempt trajectories (failure-selected)",
            xlabel="Attempt", ylabel="Mean target probability", xticks=[1, 2, 3], ylim=(0, 1))
@@ -101,11 +101,11 @@ def build_figure(attempts: pd.DataFrame, transitions: pd.DataFrame,
     ax.tick_params(axis="x", rotation=15)
     ax.grid(axis="y", alpha=.22)
     ax.legend(title="Transition", fontsize=8)
-    fig.suptitle("S5 Bangla verifier trajectories and selection-controlled Goodhart test",
+    fig.suptitle("Bangla verifier trajectories and same-case divergence diagnostics",
                  fontsize=13, fontweight="bold")
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(output, dpi=220, metadata={"Software": "thesis/plot_s5_goodhart_bn.py",
-                                           "Title": "S5 Bangla Goodhart figure",
+                                           "Title": "Bangla verifier-divergence diagnostics",
                                            "Description": f"git_commit={provenance['git_commit']}"})
     plt.close(fig)
 

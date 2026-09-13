@@ -2,7 +2,8 @@
 
 ## Scope and authority
 
-This audit read the seven active chapters, front matter, appendices, assembly
+This audit was reconciled on 2026-08-27 against the eight canonical chapters,
+front matter, appendices, assembly
 order, table/figure manifest, STATUS, protocol and normative pipeline against
 the frozen result artifacts. On quantities, STATUS and computed artifacts were
 treated as authoritative; on methods, `research_pipeline_en.md` was treated as
@@ -14,17 +15,17 @@ generation, split, threshold, score or statistical test was rerun.
 
 | Thesis stage | Active location | Audit finding |
 |---|---|---|
-| Problem, claim boundary and four RQs | Chapters 1 and 7 | Present; response generation is distinguished from audience prediction and discrete personas |
+| Problem, claim boundary and four RQs | Chapters 1, 7 and 8 | Present; response generation is distinguished from audience prediction and discrete personas |
 | Literature and gap | Chapter 2 | Present across synthetic audiences, self-correction, RAG, neuro-symbolic validation, Goodhart risk, Bangla NLP and human evaluation |
-| Raw review provenance and cleaning | Chapter 3.1 | Present with exact workbook hash, 5,000→4,730 audit and unrecoverable row-level source limitation |
-| Frozen Gold/R1/R2 partition | Chapter 3.2 | Present; Gold-300 is described as eval-only and absent from training/RAG/tuning |
-| Plot stimuli and licensing | Chapter 3.3 and Appendix D | Present: 3,135 candidates→124 mechanical survivors→120 frozen plots→30/90 split; revision-level attribution retained |
-| Construct discovery and validation | Chapter 3.4–3.8 | Present, including rejected source clusters, failed Gold-300 ordinal instrument and successful fresh-R1 comparative instrument |
+| Raw review provenance and cleaning | Chapter 3 §3.4 | Present with exact workbook hash, 5,000→4,730 audit and unrecoverable row-level source limitation |
+| Frozen Gold/R1/R2 partition | Chapter 3 §3.5 | Present; Gold-300 is described as eval-only and absent from training/RAG/tuning |
+| Plot stimuli and licensing | Chapter 3 §3.3.2 and Appendix D | Present: 3,135 candidates→124 mechanical survivors→120 frozen plots→30/90 split; revision-level attribution retained |
+| Construct discovery and validation | Chapter 3 §§3.6–3.10 | Present, including rejected source clusters, failed Gold-300 ordinal instrument and successful fresh-R1 comparative instrument |
 | Verifier development and isolation | Chapter 4 | Present; A is in-loop, B is outcome-only, and B calibration null is retained |
 | Agent roles and intervention contracts | Chapter 5 | Present; audit added the missing bounded-workflow defence and model-calling-role disclosure |
-| Frozen 5,400-case execution | Chapters 5.8 and 6.1–6.2 | Present with registered key surface, seeds as blocks, archive integrity and 7,068 local/654 hosted calls |
+| Frozen 5,400-case execution | Chapters 5 §5.7 and 6 §§6.1–6.2 | Present with registered key surface, seeds as blocks, archive integrity and 7,068 local/654 hosted calls |
 | Automated, human and sensitivity results | Chapter 6 | Present; audit added previously omitted Distinct-1/2 and Self-BLEU-4 ranges |
-| Interpretation, threats and responsible use | Chapter 7 and Appendices B/C | Present; no institutional approval/exemption is claimed, while consent and convenience-sample pressure are disclosed |
+| Interpretation, threats, conclusions and responsible use | Chapters 7–8 and Appendices B/C | Present; no institutional approval/exemption is claimed, while consent and convenience-sample pressure are disclosed |
 
 ## Corrections made by this audit
 
@@ -67,9 +68,8 @@ and claim boundary; it did not change the frozen experiment.
   pagination remain external author/institution inputs.
 - A consolidated compute-hours scalar is not reconstructed; existing runtime
   provenance remains the evidence unless a venue explicitly requires it.
-- Remaining planned figures are separate visual work. Their absence does not
-  imply a missing experimental stage because every associated table/result is
-  already present and source-mapped.
+- All eleven manifested main-text figures are present and source-mapped; final
+  print sizing and pagination remain part of document assembly.
 
 ## Citation-order contract
 

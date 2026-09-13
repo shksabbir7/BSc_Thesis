@@ -5,15 +5,19 @@
 | AI | Artificial intelligence |
 | ARI | Adjusted Rand index |
 | AUC | Area under the receiver-operating-characteristic curve |
+| BGE-M3 | Multilingual dense text-embedding model used for retrieval in cited work |
 | BH | Benjamini–Hochberg multiple-testing correction |
+| BM25 | Best Match 25, a lexical term-weighting retrieval function |
 | CI | Confidence interval |
 | ECE | Expected calibration error |
 | HDBSCAN | Hierarchical Density-Based Spatial Clustering of Applications with Noise |
 | HEDS | Human Evaluation Data Sheet |
 | JS | Jensen–Shannon divergence |
 | K | Number of clusters or partitions considered by a clustering procedure |
+| KBQA | Knowledge-base question answering |
 | LaBSE | Language-Agnostic BERT Sentence Embedding |
 | LLM | Large language model |
+| LoRA | Low-rank adaptation, a parameter-efficient fine-tuning method |
 | MAUVE | Distributional similarity metric for generated and reference text |
 | NF4 | 4-bit NormalFloat quantization format |
 | NLL | Negative log-likelihood |

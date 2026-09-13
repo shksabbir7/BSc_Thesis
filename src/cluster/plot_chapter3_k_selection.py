@@ -102,8 +102,6 @@ def main() -> int:
     handles, labels = axes[0, 0].get_legend_handles_labels()
     fig.legend(handles, labels, loc="upper center", bbox_to_anchor=(0.5, 0.945),
                ncol=2, frameon=False)
-    fig.suptitle("K-selection diagnostics across the two corpus regions",
-                 fontweight="bold", y=0.985)
     fig.subplots_adjust(left=0.08, right=0.98, bottom=0.08, top=0.85,
                         hspace=0.18, wspace=0.13)
 

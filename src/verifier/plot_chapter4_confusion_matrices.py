@@ -67,9 +67,6 @@ def main() -> int:
         ax.set_xticks([0, 1], ["Level 0", "Level 1"])
         ax.set_yticks([0, 1], ["Level 0", "Level 1"])
     fig.colorbar(image, ax=axes, shrink=.78, label="Number of development items")
-    fig.suptitle("Descriptive Confusion Matrices on the Shared Held-Out dev-82 Slice",
-                 fontweight="bold")
-
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     fig.savefig(
