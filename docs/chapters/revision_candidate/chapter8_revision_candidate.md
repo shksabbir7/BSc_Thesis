@@ -1,0 +1,55 @@
+# Chapter 8 — Conclusion and Future Work
+
+This chapter draws together the findings from the Bangla study and outlines the
+questions that remain. No new analysis is introduced.
+
+## 8.1 Conclusion
+
+This thesis examined whether a verifier-in-the-loop workflow could control a
+meaningful distinction in short Bangla cinema responses while revealing the
+risks of optimizing an automatic proxy. The Bangla experiment shows that the
+registered controls improve Verifier-B target probability over zero-shot
+generation, and native Bangla readers usually recover the requested level on
+the blinded subset. That level represents engagement specificity, not audience
+identity. The corpus does not contain natural audience clusters, response
+length remains entangled with the two levels, and the observed advantage of
+symbolic feedback over neural-only gating remains exploratory. Symbolic rules
+are therefore better supported as revision diagnostics than as an acceptance
+gate. Because Verifier-B remains outside generation, its widening disagreement
+with Verifier-A can be observed rather than optimized away. The framework
+supports controlled Bangla response generation, but it does not model real
+audiences. Claims about viewers, films or market response still require
+evidence from people.
+
+## 8.2 Future Work
+
+Several questions remain for future research:
+
+- **Clarify what symbolic feedback adds.** A preregistered comparison with
+  neural-only gating should define level-wise contrasts before generation,
+  retain paired cases and keep the outcome verifier sealed.
+
+- **Extend the human evaluation.** A larger and more diverse participant pool is
+  needed for condition-level estimates. Target match, fluency, naturalness,
+  usefulness and harmful content should remain separate measures rather than
+  being merged into one score.
+
+- **Check plot faithfulness.** A blinded human audit should compare each
+  response with its source plot and record unsupported or contradictory
+  details. The interface diagnostic should be checked against these judgments
+  before it is treated as an evaluation measure.
+
+- **Probe the verifiers.** Controlled changes in length, register, punctuation,
+  sentiment markers and lexical specificity could show which cues drive
+  disagreement between Verifier-A and Verifier-B. Calibration also needs a
+  larger held-out set.
+
+- **Rebuild symbolic verification before using it as a gate.** A revised scorer
+  would need more labelled data and out-of-sample evaluation. Until then, its
+  supported role is diagnostic.
+
+- **Test beyond the present setting.** The deferred English mirror, broader Bangla
+  registers, longer responses and other generator families would show which
+  findings travel beyond this study. Film-linked human responses are necessary
+  before controlled generation can be considered for pre-release audience
+  prediction.

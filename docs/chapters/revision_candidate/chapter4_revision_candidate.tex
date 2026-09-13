@@ -1,0 +1,192 @@
+%!TEX root = ../thesis.tex
+% The preamble must load graphicx, tabularx, array, and booktabs.
+
+\chapter{Verifier Development and Isolation}
+\label{chap:verifier-development}
+
+\ifpdf
+    \graphicspath{{Chapter4/Figs/Raster/}{Chapter4/Figs/PDF/}{Chapter4/Figs/}{Chapter4/figures/}}
+\else
+    \graphicspath{{Chapter4/Figs/Vector/}{Chapter4/Figs/}{Chapter4/figures/}}
+\fi
+
+The system uses two verifiers so that the model guiding revision does not also determine the final result. Verifier-A guides generation; Verifier-B scores only completed outputs. Both reproduce the operational levels developed in Chapter~\ref{chap:research-methodology}; human recognition is assessed separately.
+
+\section{Verifier Design and Data Separation}
+
+Verifier-A is the in-loop verifier. It scores drafts, supports acceptance decisions, and helps select among generated alternatives. Verifier-B is used only for final evaluation: it is excluded from retrieval, prompting, feedback, candidate selection, and regeneration. The final analysis tests whether gains against the in-loop scorer also appear under a model that did not influence generation. Cross-family evaluation has similarly been used to detect divergence between an optimised proxy and independent reference models \cite{b69}.
+
+The two verifiers also differ in their training data and model families. Verifier-A is trained on the labelled R1 partition, while Verifier-B is trained on the disjoint R2 partition. Both are evaluated on the same 82-item development slice so that their predictions can be compared on identical texts. Gold-300 is excluded from training, calibration, retrieval, prompting, and threshold selection. Table~\ref{tab:verifier-data} summarizes these data privileges.
+
+\begin{table}[htbp]
+\centering
+\caption{Data available to each verifier}
+\label{tab:verifier-data}
+\footnotesize
+\setlength{\tabcolsep}{3.5pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.18\textwidth} >{\raggedright\arraybackslash}p{0.19\textwidth} >{\centering\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.19\textwidth} >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Component} & \textbf{Training partition} & \textbf{Level 0/1} & \textbf{Evaluation partition} & \textbf{Role} \\
+\midrule
+Backbone ablation & R1 training subset, $n=804$ & 481/323 & dev-82 (53/29) & Compare the seven evaluated model configurations \\
+Verifier-A & R1 training subset, $n=804$ & 481/323 & dev-82 (53/29) & In-loop scoring and selection \\
+Verifier-B & R2 Region-A subset, $n=888$ & 531/357 & dev-82 (53/29) & Outcome-only evaluation \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Note.} Dev-82 is the labelled Region-A portion of the 200-item R1 development subset and is excluded from the 804 Verifier-A training items. R2 is disjoint from R1. Gold-300 is not used in any experiment reported in this chapter.
+\end{minipage}
+\end{table}
+
+The development slice is held out from both verifier-training sets, but it serves several purposes: learning-rate selection in the ablation, temperature fitting, and the evaluation reported in this chapter. The reported scores are development-set estimates, not independent final-test performance.
+
+\section{Backbone Results and Construction Circularity}
+
+Seven model configurations were evaluated because earlier Bangla classification studies do not identify a consistent leading backbone. MuRIL, XLM-R, and IndicBERTv2 have each been reported as the strongest model in related Bangla tasks \cite{b26,b27,b28}. Evidence that fine-tuned small models can outperform zero-shot generative classifiers also supports using a trained discriminative verifier for this task \cite{b52}. The comparison included Bangla-specific, Indic, multilingual, contrastive, and entailment-based alternatives. The five conventional fine-tuning models used four epochs, batch size 16, a maximum sequence length of 128, two learning rates ($2\times10^{-5}$ and $3\times10^{-5}$), and seeds 42--46. SetFit--LaBSE and BERT-NLI followed their respective training procedures \cite{b51,b61}.
+
+Macro-F1 was used because the two levels are imbalanced. Variation across seeds is reported as sensitivity rather than as an inferential decision rule \cite{b46,b47,b48}. The registered comparison used paired bootstrap tests with 10,000 resamples and Benjamini--Hochberg correction across all 21 model pairs \cite{b49,b50}. Table~\ref{tab:backbone-circularity-results} reports the model results together with the diagnostic baselines used to interpret them.
+
+\begin{table}[htbp]
+\centering
+\caption{Model and baseline performance on dev-82}
+\label{tab:backbone-circularity-results}
+\footnotesize
+\setlength{\tabcolsep}{2.7pt}
+\renewcommand{\arraystretch}{1.12}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}X >{\centering\arraybackslash}p{0.20\textwidth} >{\centering\arraybackslash}p{0.16\textwidth} >{\centering\arraybackslash}p{0.23\textwidth}@{}}
+\toprule
+\textbf{Model or baseline} & \textbf{Mean macro-F1} & \textbf{Seed SD} & \textbf{Selected learning rate} \\
+\midrule
+\multicolumn{4}{@{}l}{\textit{Evaluated models}} \\
+BanglaBERT & 0.9647 & 0.0209 & $3\times10^{-5}$ \\
+SetFit--LaBSE & 0.9590 & Not estimable & Not applicable \\
+IndicBERTv2 & 0.9560 & 0.0156 & $3\times10^{-5}$ \\
+MuRIL & 0.9421 & 0.0391 & $3\times10^{-5}$ \\
+mBERT & 0.9402 & 0.0125 & $2\times10^{-5}$ \\
+XLM-R & 0.9360 & 0.0219 & $3\times10^{-5}$ \\
+BERT-NLI & 0.9298 & 0.0165 & $3\times10^{-5}$ \\
+\addlinespace[2pt]
+\multicolumn{4}{@{}l}{\textit{Diagnostic baselines}} \\
+Majority classifier & 0.3926 & --- & --- \\
+Length rule & 0.6197 & --- & --- \\
+Frozen LaBSE with logistic regression & \textbf{0.9866} & --- & Fixed defaults \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Note.} For the evaluated models, the mean and standard deviation are calculated across five seeds at the selected learning rate. The diagnostic baselines were not included in the 21 corrected pairwise comparisons. SetFit--LaBSE produced only one distinct prediction vector; its seed variability could therefore not be estimated. BanglaBERT was retained using the predetermined non-performance tie-break. The reported scores measure agreement with the operational labels rather than with independently assigned human labels.
+\end{minipage}
+\end{table}
+
+None of the 21 pairwise comparisons remained significant after correction; the smallest unadjusted $p$-value was 0.0960. A robustness analysis pooling both learning rates produced the same result. BanglaBERT was retained using the predetermined non-performance tie-break, not because the experiment established its superiority.
+
+\subsection{Construction Circularity}
+
+The frozen LaBSE probe changed how the backbone results had to be read. Chapter~\ref{chap:research-methodology} formed the two operational levels by applying K-means to LaBSE embeddings. A linear classifier trained on those same embeddings reached 0.9866 macro-F1, exceeding the highest fine-tuned mean of 0.9647. Figure~\ref{fig:backbone-circularity} places this baseline beside the seven evaluated models.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{Chapter4/figures/backbone_ablation_circularity_thesis.png}
+\caption{Backbone performance and the frozen-LaBSE baseline on dev-82. Whiskers show $\pm 1$ seed SD; no variability estimate is available for SetFit--LaBSE.}
+\label{fig:backbone-circularity}
+\end{figure}
+
+The label is almost linearly recoverable from the representation used to construct it. For that reason, the ablation cannot support a claim about general backbone quality. Its near-ceiling scores show label reproduction, not independent validation of the construct, and the tie should be understood in that context.
+
+The length-only rule reached 0.6197, compared with 0.3926 for the majority classifier. Length is consequently part of the operational distinction, although the residual and human-validation analyses in Chapter~\ref{chap:research-methodology} show that it does not explain the distinction completely. In particular, annotators recovered the intended direction in length-matched comparisons without access to either verifier.
+
+This circularity matters when Verifier-A is placed inside the generation loop. A generator may raise its score by moving text toward the preferred region of LaBSE space without producing an improvement that transfers to another evaluator. Verifier-B uses a different model family and different training data, and it is applied only after generation.
+
+\section{Final Verifier Configurations}
+
+\subsection{Verifier-A}
+
+Verifier-A combines the frozen \texttt{sentence-transformers/LaBSE} encoder \cite{b3} with an L2-regularised logistic-regression head trained on 804 R1 items. The embeddings are L2-normalised, and the classifier uses fixed library settings rather than development-score-based hyperparameter selection. On dev-82, it reproduced the circularity baseline exactly: macro-F1 was 0.9866, with one Level-1 item classified as Level 0.
+
+The model is inexpensive enough for repeated calls during generation, but its high score should be interpreted narrowly. It shows that the operational boundary can be recovered from its originating embedding space. It does not establish human-ground-truth validity, and the same geometric relationship that makes the model accurate may also make it vulnerable to optimisation against its score.
+
+\subsection{Verifier-B}
+
+Verifier-B is a BanglaBERT model \cite{b2} trained from scratch on the 888 labelled R2 items using the same four-epoch setup evaluated in the backbone comparison. It uses a fixed learning rate of $2\times10^{-5}$. The learning rate was not selected on dev-82, avoiding another validation-based choice on an already small and repeatedly used slice; recent evidence also shows that validation-optimal hyperparameters do not always transfer better than defaults in small holdout settings \cite{b82}. The final model uses seed 42, which was fixed before training rather than chosen from the best of five runs.
+
+The stored model reached 0.9597 macro-F1 on dev-82, making three errors. Across seeds 42--46, the mean was $0.9674\pm0.0158$, with a range from 0.9448 to 0.9866. This range is a sensitivity result, not evidence for comparing Verifier-B with Verifier-A. The models use different training partitions and architectures, and dev-82 is too small and too heavily reused to support a ranking. Table~\ref{tab:final-verifier-comparison} summarizes their assigned roles, training data, model designs, and development results.
+
+\begin{table}[htbp]
+\centering
+\caption{Roles and data boundaries of the final verifiers}
+\label{tab:final-verifier-comparison}
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.25\textwidth} >{\raggedright\arraybackslash}X >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Dimension} & \textbf{Verifier-A} & \textbf{Verifier-B} \\
+\midrule
+Function & In-loop scoring and candidate selection & Outcome-only evaluation \\
+Training data & R1, $n=804$ (481/323) & R2, $n=888$ (531/357) \\
+Model & Frozen LaBSE + logistic regression & Fine-tuned BanglaBERT \\
+Development macro-F1 & 0.9866 (1 error) & 0.9597 (3 errors; seed 42) \\
+Seed sensitivity & Deterministic fit & $0.9674\pm0.0158$ across five seeds \\
+Access during generation & Permitted & Prohibited \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Note.} Both scores are calculated on the same dev-82 items. The table describes the two verifiers in their assigned roles; it does not rank them.
+\end{minipage}
+\end{table}
+
+Figure~\ref{fig:verifier-confusion-matrices} shows the error distribution on the shared development items. Verifier-A made one false negative. Verifier-B made one false positive and two false negatives. The reference labels are the operational labels from Chapter~\ref{chap:research-methodology} rather than independent human-gold judgements.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{Chapter4/figures/verifier_confusion_matrices_thesis.png}
+\caption{Confusion matrices on dev-82. Percentages are conditional on the operational reference label.}
+\label{fig:verifier-confusion-matrices}
+\end{figure}
+
+\section{Probability Calibration}
+
+Temperature scaling was fitted separately for each verifier \cite{b53}. Logistic regression was not assumed to be calibrated merely because it performed well as a classifier; frozen-encoder studies report that a head can rank highly in accuracy while remaining weaker on calibration measures \cite{b83}. A single-parameter method was preferred because more flexible calibrators can become unreliable when the calibration sample is small \cite{b54}. Five bins were used for expected calibration error (ECE), and bootstrap intervals were calculated for the reduction in ECE. Since temperature fitting and assessment use the same 82 items, the results remain descriptive. Table~\ref{tab:verifier-calibration} reports the fitted temperatures and the before-and-after calibration measures.
+
+\begin{table}[htbp]
+\centering
+\caption{Calibration results on dev-82}
+\label{tab:verifier-calibration}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.15}
+\begin{tabularx}{\textwidth}{@{}>{\raggedright\arraybackslash}p{0.14\textwidth} >{\centering\arraybackslash}p{0.12\textwidth} >{\raggedright\arraybackslash}p{0.19\textwidth} >{\centering\arraybackslash}p{0.10\textwidth} >{\centering\arraybackslash}p{0.10\textwidth} >{\raggedright\arraybackslash}X@{}}
+\toprule
+\textbf{Verifier} & \textbf{Temperature} & \textbf{Metric} & \textbf{Before} & \textbf{After} & \textbf{Interpretation} \\
+\midrule
+Verifier-A & 0.1092 & ECE & 0.1184 & 0.0054 & Reduction 0.1130; 95\% CI [0.0743, 0.1349] \\
+ & & Brier score & 0.0306 & 0.0093 & Descriptive reduction \\
+ & & Negative log-likelihood & 0.1515 & 0.0282 & Descriptive reduction \\
+\midrule
+Verifier-B & 1.0995 & ECE & 0.0164 & 0.0100 & Reduction 0.0065; 95\% CI [$-0.0066$, 0.0070] \\
+ & & Brier score & 0.0278 & 0.0273 & Descriptive reduction \\
+ & & Negative log-likelihood & 0.1101 & 0.1088 & Descriptive reduction \\
+\bottomrule
+\end{tabularx}
+\vspace{2pt}
+\begin{minipage}{\textwidth}
+\footnotesize\textit{Note.} Temperature fitting and evaluation use the same 82-item development slice. The confidence interval refers to the reduction in ECE. Calibration improvement is supported for Verifier-A on this slice but is not established for Verifier-B.
+\end{minipage}
+\end{table}
+
+Verifier-A's temperature is below one, sharpening probabilities that were underconfident on this slice. Its ECE reduction is supported by the bootstrap interval. Verifier-B required only mild softening, and its interval includes zero; calibration improvement could not be established for that model. Later chapters treat Verifier-B scores as fixed model outputs rather than as probabilities with demonstrated out-of-sample calibration.
+
+\section{Isolation, Reproducibility, and Limits}
+
+The separation between the verifiers is enforced at several points. R1 and R2 identifiers are checked for overlap, both training sets are checked against dev-82 and Gold-300, and Verifier-B's configuration records its outcome-only role. Static checks prevent generation modules from importing Verifier-B, while generation records are rejected if they contain a Verifier-B score. These controls preserve the central comparison: both models evaluate the same generated texts, but only Verifier-A can affect how those texts are produced.
+
+The shared development set does not weaken the training-data separation. None of its 82 items appears in either verifier's training data. Its use for both models is necessary for a like-for-like descriptive comparison, although its repeated use limits generalisation claims.
+
+Dev-82 is held out from training but reused for model selection, calibration, and reporting, so it is not an independent final test set. The operational labels come from LaBSE geometry rather than human-gold verifier labels. The SetFit implementation did not produce effective seed or learning-rate variation, and calibration was fitted and assessed on only 82 items. Calibration improved for Verifier-A on this slice, but the corresponding improvement was not established for Verifier-B. The chapter therefore makes no claim about general backbone superiority, human-ground-truth accuracy, or out-of-sample calibration.
+
+\section{Chapter Summary}
+
+Verifier-A reproduces the LaBSE-derived boundary from R1 and guides generation; Verifier-B learns from disjoint R2 data and scores only sealed outputs. The ablation did not identify a superior backbone, while the near-perfect frozen LaBSE probe exposed construction circularity. Chapter~\ref{chap:framework} therefore uses Verifier-A for control and preserves Verifier-B for outcome evaluation.

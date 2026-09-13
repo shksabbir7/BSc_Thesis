@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="1160" viewBox="0 0 2000 1160" role="img" aria-labelledby="title desc">
+  <title id="title">Audited example of the verifier-in-the-loop workflow</title>
+  <desc id="desc">A real BN006 Level-0 case showing retrieval, a failed first draft, feedback, a passing revision, and independent Verifier-B evaluation.</desc>
+  <defs>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%"><feDropShadow dx="0" dy="5" stdDeviation="6" flood-color="#0f172a" flood-opacity="0.12"/></filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#26364a"/></marker>
+    <marker id="greenArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#16823b"/></marker>
+    <marker id="redArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#c62828"/></marker>
+    <marker id="tealArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto"><path d="M0 0 L12 6 L0 12 Z" fill="#147a76"/></marker>
+    <style>
+      .latin{font-family:Arial,sans-serif}.bn{font-family:'Nirmala UI','Noto Sans Bengali',sans-serif}.title{font-size:34px;font-weight:700;fill:#102033}.subtitle{font-size:18px;font-weight:400;fill:#526276}.head{font-size:22px;font-weight:700;fill:#102033}.body{font-size:18px;font-weight:400;fill:#24364b}.small{font-size:16px;font-weight:400;fill:#43546a}.tag{font-size:16px;font-weight:700}.panel{stroke-width:3.5;filter:url(#shadow)}.flow{fill:none;stroke:#26364a;stroke-width:4;marker-end:url(#arrow)}.fail{fill:none;stroke:#c62828;stroke-width:4;marker-end:url(#redArrow)}.pass{fill:none;stroke:#16823b;stroke-width:4.5;marker-end:url(#greenArrow)}.sealed{fill:none;stroke:#147a76;stroke-width:4;stroke-dasharray:12 9;marker-end:url(#tealArrow)}
+    </style>
+  </defs>
+  <rect width="2000" height="1160" fill="#fff"/>
+  <text x="1000" y="53" text-anchor="middle" class="latin title">Audited Example Trace: BN006, Target Level 0</text>
+  <text x="1000" y="86" text-anchor="middle" class="latin subtitle">Observed case from the completed Bangla generation run (replicate seed 42)</text>
+
+  <!-- Input -->
+  <rect x="65" y="135" width="440" height="255" rx="20" fill="#eaf3ff" stroke="#2370c8" class="panel"/>
+  <text x="285" y="180" text-anchor="middle" class="latin head">1  CASE INPUT</text>
+  <text x="100" y="224" class="latin body">Film: Onek Dame Kena</text>
+  <text x="100" y="264" class="latin body">Target: Level 0</text>
+  <text x="100" y="306" class="bn body">প্লট: হিরো অন্ধ ফুল বিক্রেতা পুষ্পকে</text>
+  <text x="100" y="341" class="bn body">ভালোবাসে এবং তার চিকিৎসার চেষ্টা করে…</text>
+  <text x="100" y="374" class="latin small">Plot excerpt shortened for display</text>
+
+  <!-- Retrieval -->
+  <rect x="650" y="135" width="430" height="255" rx="20" fill="#f0ecff" stroke="#7948d6" class="panel"/>
+  <text x="865" y="180" text-anchor="middle" class="latin head">2  R1-ONLY RETRIEVAL</text>
+  <text x="690" y="229" class="latin body">LaBSE returns 10 exemplars</text>
+  <text x="690" y="270" class="latin body">First IDs:</text>
+  <text x="715" y="309" class="latin body">bn_1766 · bn_1111 · bn_1779</text>
+  <text x="690" y="354" class="latin small">Exact IDs retained in the attempt trace</text>
+  <path d="M505 260 H630" class="flow"/>
+
+  <!-- Draft 1 -->
+  <rect x="1225" y="135" width="710" height="255" rx="20" fill="#fff3df" stroke="#e56513" class="panel"/>
+  <text x="1580" y="180" text-anchor="middle" class="latin head">3  WRITER — ATTEMPT 1</text>
+  <text x="1270" y="238" class="bn body">“ব্যাপারটা কেমন যেন, বুঝলাম না ভালো লাগছেও না,</text>
+  <text x="1270" y="279" class="bn body">খারাপও লাগছে না!”</text>
+  <text x="1270" y="336" class="latin small">Generated with the prompted Gemma-3-12B-IT model</text>
+  <path d="M1080 260 H1205" class="flow"/>
+
+  <!-- Fail decision -->
+  <rect x="1225" y="485" width="710" height="215" rx="20" fill="#fff0f1" stroke="#c62828" class="panel"/>
+  <text x="1580" y="530" text-anchor="middle" class="latin head">4  VERIFIER-A DECISION: FAIL</text>
+  <text x="1270" y="580" class="latin body">Target probability: 0.00000054</text>
+  <text x="1270" y="627" class="bn body">Feedback: অস্পষ্ট প্রকাশ বাদ দিয়ে “ঠিক আছে” অথবা</text>
+  <text x="1270" y="666" class="bn body">“মোটামুটি” ধরনের সাধারণ প্রতিক্রিয়া লিখতে হবে।</text>
+  <path d="M1580 390 V465" class="fail"/>
+
+  <!-- Rewrite -->
+  <rect x="650" y="485" width="430" height="215" rx="20" fill="#e9f7ec" stroke="#26964d" class="panel"/>
+  <text x="865" y="530" text-anchor="middle" class="latin head">5  REFLECT + RETRY</text>
+  <text x="690" y="581" class="latin body">Attempt becomes 2</text>
+  <text x="690" y="622" class="latin body">Feedback enters the prompt</text>
+  <text x="690" y="663" class="latin small">Query anchor and trace are preserved</text>
+  <path d="M1225 592 H1100" class="fail"/>
+
+  <!-- Draft 2 -->
+  <rect x="65" y="485" width="440" height="215" rx="20" fill="#e9f7ec" stroke="#26964d" class="panel"/>
+  <text x="285" y="530" text-anchor="middle" class="latin head">6  WRITER — ATTEMPT 2</text>
+  <text x="100" y="582" class="bn body">“মোটামুটি লাগছে। এমন অনেক মুভি</text>
+  <text x="100" y="621" class="bn body">দেখতেছি, ভালো লাগাটা আর আগের মতো নেই।”</text>
+  <text x="100" y="667" class="latin small">Observed revised draft</text>
+  <path d="M650 592 H525" class="flow"/>
+
+  <!-- Pass -->
+  <rect x="65" y="805" width="565" height="210" rx="20" fill="#edf9f0" stroke="#16823b" class="panel"/>
+  <text x="347" y="850" text-anchor="middle" class="latin head">7  VERIFIER-A DECISION: PASS</text>
+  <text x="105" y="904" class="latin body">Target probability: 1.0000</text>
+  <text x="105" y="947" class="latin body">Attempt 2 selected; gave_up = false</text>
+  <text x="105" y="987" class="latin small">Generation loop stops</text>
+  <path d="M285 700 V785" class="pass"/>
+
+  <!-- Final output -->
+  <rect x="760" y="805" width="570" height="210" rx="20" fill="#e8f7f5" stroke="#14817c" class="panel"/>
+  <text x="1045" y="850" text-anchor="middle" class="latin head">8  FINAL RESPONSE</text>
+  <text x="805" y="905" class="bn body">“মোটামুটি লাগছে। এমন অনেক মুভি দেখতেছি,</text>
+  <text x="805" y="944" class="bn body">ভালো লাগাটা আর আগের মতো নেই।”</text>
+  <text x="805" y="987" class="latin small">Response and complete attempt trace are retained</text>
+  <path d="M630 910 H740" class="pass"/>
+
+  <!-- Independent evaluation -->
+  <rect x="1460" y="805" width="475" height="210" rx="20" fill="#e8f7f5" stroke="#14817c" class="panel"/>
+  <text x="1697" y="850" text-anchor="middle" class="latin head">9  SEALED VERIFIER-B</text>
+  <text x="1505" y="904" class="latin body">Target probability: 0.9863</text>
+  <text x="1505" y="947" class="latin body">Binary success: yes</text>
+  <text x="1505" y="987" class="latin small">Outcome scoring only; no return path</text>
+  <path d="M1330 910 H1440" class="sealed"/>
+
+  <rect x="390" y="1065" width="1220" height="55" rx="10" fill="#f5f7fa"/>
+  <text x="1000" y="1100" text-anchor="middle" class="latin small">Source key: S5BN|s42|BN006|L0|rag_neural_symbolic_feedback · Display text is shortened only where explicitly marked.</text>
+</svg>
