@@ -1,0 +1,87 @@
+{
+  "_provenance": {
+    "timestamp_utc": "2026-09-13T14:25:27.366385+00:00",
+    "git_commit": "b4def004cf41d6aaf14f159a451d3289ed9ad675",
+    "untracked_files": 0,
+    "config": "configs/s5_instrument_agreement_bn.yaml",
+    "python": "3.13.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "result": {
+    "status": "INSTRUMENT_DIVERGENCE_MEASURED",
+    "scientific_standing": "descriptive_exploratory_not_in_confirmatory_family",
+    "selection_disclosure": "This comparison was added after the registered nine condition-versus-zero-shot results were known, during the thesis rewrite, to test one candidate explanation of the Level-0 asymmetry. It is not part of the frozen inferential family, and its p-value is unadjusted and post-selection.",
+    "interpretation_rule": "A divergence between the two instruments is evidence that the reported Level-0 weakness is measured differently by a trained classifier and by blinded readers. It does not establish which instrument is closer to the construct, and it does not revise any registered number: the primary outcome remains Verifier-B on all 5,400 cases. Per-condition breakdown is refused because each cell holds five items.",
+    "instruments": {
+      "primary_outcome": "verifier_b_binary_target_match",
+      "verifier_b_threshold": 0.5,
+      "verifier_a_threshold_operating_point": 0.4384071072784451,
+      "human_rule": "majority_of_three_annotators",
+      "human_panel_size": 3
+    },
+    "overall": {
+      "n_items": 100,
+      "n_judgments": 300,
+      "human_majority_target_match": 0.92,
+      "verifier_b_target_match_same_items": 0.75,
+      "verifier_a_target_match_same_items": 0.77,
+      "human_minus_verifier_b": 0.17,
+      "both_correct": 70,
+      "human_only_correct": 22,
+      "verifier_b_only_correct": 5,
+      "both_incorrect": 3,
+      "descriptive_unadjusted_mcnemar_p": 0.0015137195587158203,
+      "human_vs_verifier_b_label_agreement": 0.73,
+      "human_vs_verifier_b_cohen_kappa": 0.45999999999999996,
+      "n_human_unanimous": 88
+    },
+    "by_target_level": {
+      "0": {
+        "n_items": 50,
+        "n_judgments": 150,
+        "human_majority_target_match": 0.92,
+        "verifier_b_target_match_same_items": 0.6,
+        "verifier_a_target_match_same_items": 0.7,
+        "human_minus_verifier_b": 0.32,
+        "both_correct": 28,
+        "human_only_correct": 18,
+        "verifier_b_only_correct": 2,
+        "both_incorrect": 2,
+        "descriptive_unadjusted_mcnemar_p": 0.0004024505615234375,
+        "human_vs_verifier_b_label_agreement": 0.6,
+        "human_vs_verifier_b_cohen_kappa": 0.038461538461538235,
+        "n_human_unanimous": 45
+      },
+      "1": {
+        "n_items": 50,
+        "n_judgments": 150,
+        "human_majority_target_match": 0.92,
+        "verifier_b_target_match_same_items": 0.9,
+        "verifier_a_target_match_same_items": 0.84,
+        "human_minus_verifier_b": 0.02,
+        "both_correct": 42,
+        "human_only_correct": 4,
+        "verifier_b_only_correct": 3,
+        "both_incorrect": 1,
+        "descriptive_unadjusted_mcnemar_p": 1.0,
+        "human_vs_verifier_b_label_agreement": 0.86,
+        "human_vs_verifier_b_cohen_kappa": 0.14634146341463367,
+        "n_human_unanimous": 43
+      }
+    },
+    "refused": {
+      "per_condition_breakdown": "five items and 15 judgments per condition-by-level cell cannot support it"
+    },
+    "input": {
+      "scores_path": "results/s5_main_bn_verifier_b_scores.jsonl",
+      "scores_sha256": "0a7de4b67fe41186d291cc15578401c21df4ae8fe378cf21c0f1c52385ca23f4",
+      "human_responses_path": "results/s5_human_eval_bn_responses.csv",
+      "human_responses_sha256": "d30e33ecbc66d0a515931ac1bf44d67a2cf769aa6e4f569b75c1d973c13d4f82",
+      "researcher_key_path": "data/annotation/s5_human_eval_bn/researcher_key.csv",
+      "researcher_key_sha256": "300f04e75f8abf23eaa07905572d8e66fb3a48b2d3f052234b349b0614ba1154",
+      "n_items": 100,
+      "generation_rerun": false,
+      "verifier_b_rescoring": false
+    }
+  }
+}

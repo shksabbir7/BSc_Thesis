@@ -1,0 +1,240 @@
+{
+  "_provenance": {
+    "timestamp_utc": "2026-09-13T14:25:09.379612+00:00",
+    "git_commit": "b4def004cf41d6aaf14f159a451d3289ed9ad675",
+    "untracked_files": 0,
+    "config": "configs/s5_error_examples_bn.yaml",
+    "python": "3.13.3",
+    "platform": "Windows-11-10.0.26200-SP0"
+  },
+  "result": {
+    "status": "EXAMPLES_SELECTED",
+    "scientific_standing": "illustrative_only_selected_by_registered_rule; stratum sizes are counts over the frozen surface and are not a new evaluation metric",
+    "selection_rule": "Fix replicate seed 42, filter to the stratum stated in the config, order by case key and take the first. No text was read before the strata were registered.",
+    "interpretation_rule": "Each example illustrates a failure mode whose frequency is given by its stratum size out of 90 evaluation plots at that condition and level. Verifier-B is the registered outcome measure, not ground truth, so a case it marks as failing is evidence about the measured outcome and not proof that a human would agree.",
+    "replicate_seed": 42,
+    "tie_break": "lexicographic_first_key",
+    "examples": [
+      {
+        "id": "E1",
+        "kind": "single_condition",
+        "description": "Baseline failure at the low-specificity level: what an unconditioned prompt produces when Level 0 is requested and Verifier-B disagrees.",
+        "stratum_size": 53,
+        "stratum_denominator": 90,
+        "selected": {
+          "key": "S5BN|s42|BN002|L0|zero_shot",
+          "plot_id": "BN002",
+          "condition": "zero_shot",
+          "target_level": 0,
+          "replicate_seed": 42,
+          "text": "ব্যাপারটা খুবই দুঃখজনক! এমন একটা গল্প! 😥😥",
+          "finish_reason": "stop",
+          "completion_tokens": 15,
+          "verifier_b_target_probability": 0.16377215366930242,
+          "verifier_b_binary_success": 0,
+          "verifier_a_target_probability": 0.0011751259587710061,
+          "gave_up": false,
+          "logical_generator_calls": 1,
+          "attempt_scores": [],
+          "word_count": 7
+        }
+      },
+      {
+        "id": "E2",
+        "kind": "single_condition",
+        "description": "Baseline failure at the high-specificity level, for symmetry with E1.",
+        "stratum_size": 19,
+        "stratum_denominator": 90,
+        "selected": {
+          "key": "S5BN|s42|BN002|L1|zero_shot",
+          "plot_id": "BN002",
+          "condition": "zero_shot",
+          "target_level": 1,
+          "replicate_seed": 42,
+          "text": "গল্পটা দেখাচ্ছিল, একটা মেয়ের জীবন এভাবে শেষ হয়ে যায়! মেনে নিতে পারলাম না, এত সুন্দর একটা প্রাণ এভাবে চলে গেল।",
+          "finish_reason": "stop",
+          "completion_tokens": 29,
+          "verifier_b_target_probability": 0.4146650120429289,
+          "verifier_b_binary_success": 0,
+          "verifier_a_target_probability": 0.7116826515514525,
+          "gave_up": false,
+          "logical_generator_calls": 1,
+          "attempt_scores": [],
+          "word_count": 20
+        }
+      },
+      {
+        "id": "E3",
+        "kind": "single_condition",
+        "description": "A Level-0 failure that survives the full proposed condition, which is the residual error the framework does not remove.",
+        "stratum_size": 27,
+        "stratum_denominator": 90,
+        "selected": {
+          "key": "S5BN|s42|BN003|L0|rag_neural_symbolic_feedback",
+          "plot_id": "BN003",
+          "condition": "rag_neural_symbolic_feedback",
+          "target_level": 0,
+          "replicate_seed": 42,
+          "text": "ব্যাপারটা পুরাই অন্যরকম! শেষটা মনে হল যেন একটু বেশি প্যাঁচানো ছিল, তবে ছবিটা ভালোই।",
+          "finish_reason": "stop",
+          "completion_tokens": 27,
+          "verifier_b_target_probability": 0.4894420060717817,
+          "verifier_b_binary_success": 0,
+          "verifier_a_target_probability": 0.9925175465852126,
+          "gave_up": false,
+          "logical_generator_calls": 1,
+          "attempt_scores": [
+            {
+              "attempt": 1,
+              "verifier_b_target_probability": 0.4894409759596182,
+              "verifier_a_target_probability": 0.9925175465852126
+            }
+          ],
+          "word_count": 14
+        }
+      },
+      {
+        "id": "E4",
+        "kind": "single_condition",
+        "description": "The same residual-failure question at Level 1.",
+        "stratum_size": 3,
+        "stratum_denominator": 90,
+        "selected": {
+          "key": "S5BN|s42|BN024|L1|rag_neural_symbolic_feedback",
+          "plot_id": "BN024",
+          "condition": "rag_neural_symbolic_feedback",
+          "target_level": 1,
+          "replicate_seed": 42,
+          "text": "আশা মারা গেল এটা মেনে নিতে পারিনি, এমন একটা সুন্দর গল্পে এত বড় একটা ধাক্কা!",
+          "finish_reason": "stop",
+          "completion_tokens": 21,
+          "verifier_b_target_probability": 0.05669245359468808,
+          "verifier_b_binary_success": 0,
+          "verifier_a_target_probability": 0.9850218298335892,
+          "gave_up": false,
+          "logical_generator_calls": 1,
+          "attempt_scores": [
+            {
+              "attempt": 1,
+              "verifier_b_target_probability": 0.05669248846419388,
+              "verifier_a_target_probability": 0.9850218298335892
+            }
+          ],
+          "word_count": 15
+        }
+      },
+      {
+        "id": "E5",
+        "kind": "repair_pair",
+        "description": "A discordant pair in the direction that produces the registered effect: the baseline fails and the proposed condition succeeds on the same plot, level and replicate. Both texts are reported so the change is visible.",
+        "stratum_size": 36,
+        "stratum_denominator": 90,
+        "selected": {
+          "key": "S5BN|s42|BN002|L0|rag_neural_symbolic_feedback",
+          "plot_id": "BN002",
+          "condition": "rag_neural_symbolic_feedback",
+          "target_level": 0,
+          "replicate_seed": 42,
+          "text": "অসাধারণ! গল্পটা খুবই হৃদয়স্পর্শী, এমন একটা ছবি দেখে মনটা একেবারে খাঁ খাঁ করে উঠলো।",
+          "finish_reason": "stop",
+          "completion_tokens": 24,
+          "verifier_b_target_probability": 0.9852784756942758,
+          "verifier_b_binary_success": 1,
+          "verifier_a_target_probability": 0.9999999999984952,
+          "gave_up": false,
+          "logical_generator_calls": 1,
+          "attempt_scores": [
+            {
+              "attempt": 1,
+              "verifier_b_target_probability": 0.9852784820640095,
+              "verifier_a_target_probability": 0.9999999999984952
+            }
+          ],
+          "word_count": 14
+        },
+        "comparator": {
+          "key": "S5BN|s42|BN002|L0|zero_shot",
+          "plot_id": "BN002",
+          "condition": "zero_shot",
+          "target_level": 0,
+          "replicate_seed": 42,
+          "text": "ব্যাপারটা খুবই দুঃখজনক! এমন একটা গল্প! 😥😥",
+          "finish_reason": "stop",
+          "completion_tokens": 15,
+          "verifier_b_target_probability": 0.16377215366930242,
+          "verifier_b_binary_success": 0,
+          "verifier_a_target_probability": 0.0011751259587710061,
+          "gave_up": false,
+          "logical_generator_calls": 1,
+          "attempt_scores": [],
+          "word_count": 7
+        }
+      },
+      {
+        "id": "E6",
+        "kind": "single_condition",
+        "description": "Budget exhaustion: three Writer attempts under the symbolic gate without clearing the threshold, so the emitted text is a best-of-three fallback rather than an accepted output.",
+        "stratum_size": 6,
+        "stratum_denominator": 90,
+        "selected": {
+          "key": "S5BN|s42|BN006|L1|rag_symbolic_loop",
+          "plot_id": "BN006",
+          "condition": "rag_symbolic_loop",
+          "target_level": 1,
+          "replicate_seed": 42,
+          "text": "ছবিটা দেখেই বোঝা যাচ্ছে মাল কাহিনীর চেয়ে বেশি কিছু না। নায়কের অ্যাকশনগুলো একটু বেশিই ভেলান্টিয়ার লাগছে, আর ফুল আর ধনী বাবুর প্রেম—এটা আগে দেখিনি!",
+          "finish_reason": "stop",
+          "completion_tokens": 42,
+          "verifier_b_target_probability": 0.11730355652282613,
+          "verifier_b_binary_success": 0,
+          "verifier_a_target_probability": 1.5317342820497885e-06,
+          "gave_up": true,
+          "logical_generator_calls": 5,
+          "attempt_scores": [
+            {
+              "attempt": 1,
+              "verifier_b_target_probability": 0.9413911675909457,
+              "verifier_a_target_probability": 0.9951537865645704
+            },
+            {
+              "attempt": 2,
+              "verifier_b_target_probability": 0.11730319158194755,
+              "verifier_a_target_probability": 1.5317342820497885e-06
+            },
+            {
+              "attempt": 3,
+              "verifier_b_target_probability": 0.7380010507895802,
+              "verifier_a_target_probability": 0.9801497234886487
+            }
+          ],
+          "word_count": 24
+        }
+      }
+    ],
+    "give_up_census_seed42_counts_out_of_90": {
+      "rag_neural_loop": {
+        "L0": 11,
+        "L1": 5
+      },
+      "rag_symbolic_loop": {
+        "L1": 50
+      },
+      "rag_neural_symbolic_feedback": {
+        "L0": 6,
+        "L1": 5
+      },
+      "gemma4_26b_a4b_judge_loop": {
+        "L0": 1
+      }
+    },
+    "input": {
+      "cases_path": "results/s5_main_bn_cases.jsonl",
+      "cases_sha256": "816a631be36f7e0a5918eb0298f7dce0c62b195ec80f43c8873ed923f94b3fd3",
+      "scores_path": "results/s5_main_bn_verifier_b_scores.jsonl",
+      "scores_sha256": "0a7de4b67fe41186d291cc15578401c21df4ae8fe378cf21c0f1c52385ca23f4",
+      "n_frozen_cases": 5400,
+      "generation_rerun": false,
+      "verifier_b_rescoring": false
+    }
+  }
+}

@@ -9,6 +9,14 @@ briefs, while Sabbir's direct reading remains zero; Gold-300 round 1 remains
 598/600 ratings (A 300, B 298) with ordinal alpha 0.4970 and is closed as an
 unreliable instrument. This check changes no data, result or method.
 
+**S5 reporting-artifact provenance repair — 2026-09-13:** The qualitative
+example selection and exploratory same-item instrument comparison were rerun
+from clean producing commit `b4def00`, with no generation or verifier rescoring.
+The example payload is unchanged. All instrument-comparison metrics are
+unchanged; its tracked human-response CSV hash now records the clean-checkout LF
+bytes. The Windows CRLF and LF files normalize to identical text and parse to
+the same 300 rows. The repaired results replace only dirty runtime provenance.
+
 **Supplementary preservation audit — 2026-09-09:** A complete local inventory
 found three useful files absent from GitHub: the anonymous 73-page report, the
 78-page defence report, and `interface/.env.example`. They are now designated

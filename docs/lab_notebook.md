@@ -6031,3 +6031,46 @@ no scientific generation rerun occurred.
 
 ### Citations needed
 - None. This closes a storage coverage audit and introduces no method.
+
+---
+
+## 2026-09-13 -- S5.report: clean-provenance thesis reporting artifacts
+**Feeds:** Chapter 6 qualitative analysis and instrument-comparison tables
+**Commit:** `b4def004cf41d6aaf14f159a451d3289ed9ad675`
+**Artifacts:** `results/s5_error_examples_bn_v1.json`,
+`results/s5_instrument_agreement_bn_v1.json`
+
+### Numbers
+- The rule-based qualitative artifact retains six registered example strata
+  over the frozen 5,400-case surface and replicate seed 42.
+- The same-item comparison retains 100 blinded items and 300 judgments. Human
+  majority target match is 0.92, compared with 0.75 for Verifier-B and 0.77 for
+  Verifier-A on those items. Human minus Verifier-B is 0.32 at Level 0 and 0.02
+  at Level 1.
+- Both outputs record clean producing commit `b4def00`, zero untracked files,
+  no generation rerun and no Verifier-B rescoring.
+
+### Decisions made (and why)
+- The existing dirty-provenance outputs were reproduced from a detached clean
+  worktree after committing their scripts and configs. This retains the stated
+  analyses while making their producing source identity auditable.
+- Qualitative examples remain illustrative and rule-selected. The instrument
+  comparison remains descriptive and post-hoc, outside the frozen inferential
+  family; neither artifact ranks systems or changes the primary outcome.
+
+### Findings (things we did not expect)
+- The qualitative scientific payload reproduced exactly. Every metric in the
+  instrument-comparison payload also reproduced exactly.
+- The clean checkout stores the tracked human-response CSV with LF endings,
+  whereas the earlier Windows working copy used CRLF. Their normalized text and
+  parsed 300 rows are identical; only the input byte hash changed.
+
+### Consequences for downstream steps
+- Chapter 6 may cite these tracked artifacts with clean source provenance. The
+  result values and interpretation already reported in the thesis do not change.
+- Future byte-level checks should use the committed LF object from the producing
+  commit or normalize line endings only when explicitly testing content
+  equivalence; the recorded SHA-256 itself remains an exact-byte identity.
+
+### Citations needed
+- None. The rerun repairs provenance and introduces no estimator or method.
